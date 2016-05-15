@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('armAcceptantApp')
+angular.module('armCtrlPanelApp')
   .controller('StatisticCtrl', function ($scope, $rootScope, $log, $filter, $q,
                                          uiGridConstants, uiGridGroupingConstants,
                                          localStorageService, myRest) {

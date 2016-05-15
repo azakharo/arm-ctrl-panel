@@ -2,7 +2,7 @@
 
 var isMyDebug = true;
 
-angular.module('armAcceptantApp', [
+angular.module('armCtrlPanelApp', [
   'ngCookies',
   'ngSanitize',
   'ui.router',
@@ -30,6 +30,13 @@ angular.module('armAcceptantApp', [
 
     $locationProvider.html5Mode(false);
     $httpProvider.interceptors.push('authInterceptor');
+
+    $stateProvider.state('login', {
+      url: '/login',
+      template: '<login-dlg title="Контрольная панель оператора" success-route="acceptant2.statistic" success-route-debug="acceptant2.statistic" />',
+      controller: function() {}
+    });
+
   })
 
   // local storage app prefix

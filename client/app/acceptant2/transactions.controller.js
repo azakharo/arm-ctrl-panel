@@ -3,7 +3,7 @@
 const DISP_STR_ESEK = "ЕСЭК";
 const DISP_STR_TICKET = "электрон.билет";
 
-angular.module('armAcceptantApp')
+angular.module('armCtrlPanelApp')
   .controller('TransactionsCtrl', function ($scope, $rootScope, $log, $filter, $q, uiGridConstants, localStorageService,
                                             myRest) {
     $rootScope.isGettingData = true;

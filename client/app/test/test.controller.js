@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('armAcceptantApp')
+angular.module('armCtrlPanelApp')
   .controller('TestCtrl', function ($scope, uibDatepickerPopupConfig) {
 
     $scope.today = function() {

@@ -1,5 +1,5 @@
 'use strict';
 
-angular.module('armAcceptantApp')
+angular.module('armCtrlPanelApp')
   .controller('HardwareCtrl', function ($scope) {
   });

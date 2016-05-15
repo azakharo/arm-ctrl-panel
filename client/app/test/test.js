@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('armAcceptantApp')
+angular.module('armCtrlPanelApp')
   .config(function ($stateProvider) {
     $stateProvider
       .state('test', {

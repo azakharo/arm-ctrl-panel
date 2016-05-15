@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('armAcceptantApp')
+angular.module('armCtrlPanelApp')
   .controller('Acceptant2Ctrl', function ($scope, $rootScope, $state, $log, Auth, myRest) {
     $scope.Auth = Auth;
     $rootScope.isGettingData = false;
