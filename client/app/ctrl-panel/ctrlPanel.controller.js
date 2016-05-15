@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('armCtrlPanelApp')
-  .controller('Acceptant2Ctrl', function ($scope, $rootScope, $state, $log, Auth, myRest) {
+  .controller('CtrlPanelCtrl', function ($scope, $rootScope, $state, $log, Auth, myRest) {
     $scope.Auth = Auth;
     $rootScope.isGettingData = false;
 
@@ -27,23 +27,18 @@ angular.module('armCtrlPanelApp')
 
     $scope.menuItems = [
       {
-        title: 'Способы оплаты',
-        state: 'acceptant2.tariffs',
-        icon: 'fa-credit-card'
-      },
-      {
         title: 'Оборудование',
-        state: 'acceptant2.hardware',
+        state: 'ctrl-panel.hardware',
         icon: 'fa-bus'
       },
       {
         title: 'Транзакции',
-        state: 'acceptant2.transactions',
+        state: 'ctrl-panel.transactions',
         icon: 'fa-table'
       },
       {
         title: 'Статистика',
-        state: 'acceptant2.statistic',
+        state: 'ctrl-panel.statistic',
         icon: 'fa-line-chart'
       }
     ];

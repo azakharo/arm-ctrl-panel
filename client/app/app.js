@@ -25,7 +25,7 @@ angular.module('armCtrlPanelApp', [
   'loginDlg'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
-    let defaultUrl = isMyDebug ? '/acceptant2/statistic' : '/arm/accounting/stat-common-table';
+    let defaultUrl = isMyDebug ? '/ctrl-panel/statistic' : '/ctrl-panel/statistic';
     $urlRouterProvider.otherwise(defaultUrl);
 
     $locationProvider.html5Mode(false);
@@ -33,7 +33,7 @@ angular.module('armCtrlPanelApp', [
 
     $stateProvider.state('login', {
       url: '/login',
-      template: '<login-dlg title="Контрольная панель оператора" success-route="acceptant2.statistic" success-route-debug="acceptant2.statistic" />',
+      template: '<login-dlg title="Контрольная панель оператора" success-route="ctrl-panel.statistic" success-route-debug="ctrl-panel.statistic" />',
       controller: function() {}
     });
 
