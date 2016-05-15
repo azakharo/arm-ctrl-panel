@@ -1,4 +1,4 @@
-SET TRG=arm-acceptant-release
+SET TRG=arm-ctrl-panel-release
 
 pushd ..\\%TRG%
 git rm -r app
