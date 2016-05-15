@@ -24,7 +24,7 @@ module.exports = function (grunt) {
   require('time-grunt')(grunt);
 
   // Base URL replacements
-  var baseUrl = '/acceptant/';
+  var baseUrl = '/ctrl-panel/';
   var replApp = {
     from: 'app/',
     to: baseUrl + 'app/'
@@ -354,7 +354,7 @@ module.exports = function (grunt) {
     ngtemplates: {
       options: {
         // This should be the name of your apps angular module
-        module: 'armAcceptantApp',
+        module: 'armCtrlPanelApp',
         htmlmin: {
           collapseBooleanAttributes: true,
           collapseWhitespace: true,
