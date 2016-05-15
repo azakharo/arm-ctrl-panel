@@ -1,0 +1,66 @@
+@import 'bootstrap/less/bootstrap.less';
+@import 'font-awesome/less/font-awesome.less';
+
+@icon-font-path: '/bower_components/bootstrap/fonts/';
+@fa-font-path: '/bower_components/font-awesome/fonts';
+
+/**
+ * App-wide Styles
+ */
+
+.browsehappy {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}
+
+// Component styles are injected through grunt
+// injector
+@import 'acceptant2/acceptant2.less';
+@import 'acceptant2/hardware.less';
+@import 'acceptant2/statistic.less';
+@import 'acceptant2/transactions.less';
+@import 'arm-acceptant/accounting.less';
+@import 'arm-acceptant/arm-acceptant.less';
+@import 'arm-acceptant/tariffs.less';
+@import 'test/test.less';
+@import 'timeline/timeline.less';
+@import 'shared/corpus/borders.less';
+@import 'shared/corpus/breakpoints.less';
+@import 'shared/corpus/grid.less';
+@import 'shared/corpus/positioning.less';
+@import 'shared/corpus/reset.less';
+@import 'shared/corpus/responsive.less';
+@import 'shared/corpus/sizing.less';
+@import 'shared/corpus/typography.less';
+@import 'shared/corpus/utilities.less';
+@import 'shared/corpus/variables.less';
+@import 'shared/corpus/whitespace.less';
+@import 'shared/grid.less';
+@import 'shared/login/login.less';
+@import 'shared/modal/modal.less';
+@import 'uptime/uptime.less';
+// endinjector
+
+.ordered-list-group-item {
+  list-style: decimal inside;
+  display: list-item;
+}
+
+.no-border {
+  border: none !important;
+}
+
+
+.section-margin-top {
+  margin-top: 20px;
+}
+
+.section-margin-bottom {
+  margin-bottom: 20px;
+}
+
+.page-inner-section {
+  padding: 20px 20px;
+}

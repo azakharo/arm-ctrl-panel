@@ -1,0 +1,112 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <base href="/">
+    <title>Акцептант</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <link rel="icon" type="image/png" href="assets/images/mord_icon.png" />
+    <!-- build:css(client) app/vendor.css -->
+      <!-- bower:css -->
+      <link rel="stylesheet" href="bower_components/angular-ui-grid/ui-grid.css" />
+      <link rel="stylesheet" href="bower_components/angular-snap/angular-snap.css" />
+      <link rel="stylesheet" href="bower_components/bootstrap-daterangepicker/daterangepicker.css" />
+      <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css({.tmp,client}) app/app.css -->
+    <link rel="stylesheet" href="app/app.css">
+      <!-- injector:css -->
+      <!-- endinjector -->
+    <!-- endbuild -->
+  </head>
+  <body ng-app="armAcceptantApp">
+    <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <!-- Add your site or application content here -->
+    <div ui-view=""></div>
+
+    <!--[if lt IE 9]>
+    <script src="bower_components/es5-shim/es5-shim.js"></script>
+    <script src="bower_components/json3/lib/json3.min.js"></script>
+    <![endif]-->
+    <!-- build:js({client,node_modules}) app/vendor.js -->
+      <!-- bower:js -->
+      <script src="bower_components/jquery/dist/jquery.js"></script>
+      <script src="bower_components/angular/angular.js"></script>
+      <script src="bower_components/json3/lib/json3.js"></script>
+      <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+      <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+      <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+      <script src="bower_components/lodash/lodash.js"></script>
+      <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+      <script src="bower_components/moment/moment.js"></script>
+      <script src="bower_components/highcharts/highcharts.js"></script>
+      <script src="bower_components/highcharts/highcharts-more.js"></script>
+      <script src="bower_components/highcharts/modules/exporting.js"></script>
+      <script src="bower_components/angular-ui-grid/ui-grid.js"></script>
+      <script src="bower_components/angular-promise-extras/angular-promise-extras.js"></script>
+      <script src="bower_components/snapjs/snap.js"></script>
+      <script src="bower_components/angular-snap/angular-snap.js"></script>
+      <script src="bower_components/spinjs/spin.js"></script>
+      <script src="bower_components/angular-spinner/angular-spinner.js"></script>
+      <script src="bower_components/moment-range/dist/moment-range.js"></script>
+      <script src="bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+      <script src="bower_components/angular-daterangepicker/js/angular-daterangepicker.js"></script>
+      <script src="bower_components/angularjs-dropdown-multiselect/src/angularjs-dropdown-multiselect.js"></script>
+      <script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
+      <!-- endbower -->
+    <!-- endbuild -->
+    <script src="bower_components/angular-i18n/angular-locale_ru-ru.js"></script>
+    <script src="bower_components/moment/locale/ru.js"></script>
+
+        <!-- build:js(.tmp) app/app.js -->
+
+        <script src="app/app.js"></script>
+          <!-- injector:js -->
+          <script src="app/acceptant2/acceptant2.controller.js"></script>
+          <script src="app/acceptant2/acceptant2.js"></script>
+          <script src="app/acceptant2/hardware.controller.js"></script>
+          <script src="app/acceptant2/statistic.controller.js"></script>
+          <script src="app/acceptant2/transactions.controller.js"></script>
+          <script src="app/arm-acceptant/accounting.js"></script>
+          <script src="app/arm-acceptant/arm-acceptant.controller.js"></script>
+          <script src="app/arm-acceptant/arm-acceptant.js"></script>
+          <script src="app/arm-acceptant/statCardsChart.js"></script>
+          <script src="app/arm-acceptant/statCardsTable.js"></script>
+          <script src="app/arm-acceptant/statCommonChart.js"></script>
+          <script src="app/arm-acceptant/statCommonTable.js"></script>
+          <script src="app/arm-acceptant/statPrivilChart.js"></script>
+          <script src="app/arm-acceptant/statPrivilTable.js"></script>
+          <script src="app/arm-acceptant/tariffs.js"></script>
+          <script src="app/test/test.controller.js"></script>
+          <script src="app/test/test.js"></script>
+          <script src="app/timeline/timeline.directive.js"></script>
+          <script src="components/shared/alerts/alertService.js"></script>
+          <script src="components/shared/auth/auth.service.js"></script>
+          <script src="components/shared/login/login.controller.js"></script>
+          <script src="components/shared/login/login.directive.js"></script>
+          <script src="components/shared/modal/modal.service.js"></script>
+          <script src="components/shared/rest/restService.js"></script>
+          <script src="components/shared/util/essentials.js"></script>
+          <script src="components/shared/util/string-format.js"></script>
+          <script src="components/uptime/transportStatus/BusWarnPeriods.js"></script>
+          <script src="components/uptime/transportStatus/BusWarnPeriods.test.js"></script>
+          <script src="components/uptime/transportStatus/Events.js"></script>
+          <script src="components/uptime/transportStatus/OnlinePoint.js"></script>
+          <script src="components/uptime/transportStatus/Periods.js"></script>
+          <script src="components/uptime/transportStatus/StatePeriods.js"></script>
+          <script src="components/uptime/transportStatus/transportStatus.js"></script>
+          <script src="components/uptime/uptime.controller.js"></script>
+          <script src="components/uptime/uptime.directive.js"></script>
+          <!-- endinjector -->
+        <!-- endbuild -->
+</body>
+</html>

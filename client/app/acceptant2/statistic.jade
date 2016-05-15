@@ -1,0 +1,38 @@
+#stat-title.p1
+  span.text-large Статистика за&nbsp;
+  strong#stat-time-period.text-large.mr1 {{ datePicker.date | DatePickerFilter}}
+  // Time period selector
+  button.btn.btn-default.responsive-btn(date-range-picker, ng-model="datePicker.date",
+  options="dateRangePickerOpts", max="today",
+  ng-disabled='isGettingData',
+  uib-tooltip="Выбрать дату или период", tooltip-append-to-body="true", tooltip-placement="auto bottom")
+    i.glyphicon.glyphicon-calendar
+#stat-grouping.plr1.pb1
+  #stat-grouping-wrapper.p1.b1.rounded
+    .text-large Группировка данных
+    // Gropping type selector
+    label.radio-inline По дате
+      input(type='radio', name='groupingRadio', value='day', ng-model="groupBy")
+    label.radio-inline По номеру борта
+      input(type='radio', name='groupingRadio', value='bus', ng-model="groupBy")
+#stat-buttons.plr1.pb2
+  // Load button
+  button.btn.btn-primary(ng-click="onLoadBtnClick()", ng-disabled='!isFilterChanged || isGettingData')
+    i.fa.fa-spinner(ng-class="{ 'fa-pulse' : isGettingData }")
+    span &nbsp;Загрузить
+  // Export button
+  button.btn.btn-default.ml2.mr1(ng-click="onExportBtnClick()", ng-disabled='gridOptions.data.length === 0')
+    i.fa.fa-floppy-o
+    span &nbsp;Экспорт в файл
+  // Export format selector
+  //label.radio-inline CSV
+  //  input(type='radio', name='exportFrmtRadio', value='csv', ng-model="exportFormat")
+  //label.radio-inline PDF
+  //  input(type='radio', name='exportFrmtRadio', value='pdf', ng-model="exportFormat", disabled)
+#stat-table-wrapper.plr1.pb1(ng-hide="gridOptions.data.length === 0 || isFilterChanged")
+  #stat-table.grid(ui-grid="gridOptions", ui-grid-auto-resize, ui-grid-move-columns, ui-grid-exporter,
+  ui-grid-grouping, ui-grid-save-state)
+#stat-nodata-msg-wrapper(ng-show="noData && !isFilterChanged")
+  #stat-nodata-msg Данных по запросу не найдено
+//#stat-wrapper
+//  #stat-page-in-dev-msg Страница находится в разработке

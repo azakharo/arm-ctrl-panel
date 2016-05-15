@@ -1,0 +1,38 @@
+#accounting-wrapper {
+  flex: 1;
+  //  background: deepskyblue;
+}
+
+#accounting-left-part {
+}
+
+#accounting-right-part {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: stretch;
+  justify-content: flex-start;
+}
+
+#stat-switch, #data-display-switch {
+  flex: none;
+}
+
+#data-display {
+  flex: 1;
+  //  background: orangered;
+}
+
+
+//++++++++++++++++++++++++++++++++++++++++++++++++++++
+// Adjust layout for small screens
+
+@media screen and (max-width: 800px) {
+
+  #accounting-wrapper, #accounting-left-part, #accounting-right-part {
+    display: block !important;
+    height: auto !important;
+  }
+}
+
+// Adjust layout for small screens
+//++++++++++++++++++++++++++++++++++++++++++++++++++++

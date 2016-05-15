@@ -1,0 +1,61 @@
+#trans-title.p1
+  span.text-large Учтенные транзакции за&nbsp;
+  strong#trans-time-period.text-large.mr1 {{ datePicker.date | DatePickerFilter}}
+  // Time period selector
+  button.btn.btn-default.responsive-btn(date-range-picker, ng-model="datePicker.date",
+  options="dateRangePickerOpts", max="today",
+  ng-disabled='isGettingData',
+  uib-tooltip="Выбрать дату или период", tooltip-append-to-body="true", tooltip-placement="auto bottom")
+    i.glyphicon.glyphicon-calendar
+#trans-filters.plr1.pb1
+  #trans-filter-wrapper.p1.b1.rounded
+    .text-large Фильтры данных
+    .Grid.Grid--center
+      .Grid-cell--autoSize.ptb1.pr1
+        label Борты:&nbsp;
+        strong.all-selected-marker(ng-show="selectedBuses.length === busOptions.length && " +
+        "busOptions.length > 0") Все
+        strong.none-selected-marker(ng-show="selectedBuses.length === 0 && busOptions.length > 0") Не выбраны
+        .dd-ms.min-w25(ng-dropdown-multiselect="", options="busOptions", selected-model="selectedBuses",
+        extra-settings="busDdSettings", checkboxes="true", translation-texts="ruTranslation")
+      .Grid-cell--autoSize.p1
+        label Способы оплаты:&nbsp;
+        strong.all-selected-marker(ng-show="selectedPaymentMethods.length === paymentMethOptions.length && " +
+        "paymentMethOptions.length > 0") Все
+        strong.none-selected-marker(ng-show="selectedPaymentMethods.length === 0 && paymentMethOptions.length > 0") Не выбраны
+        .dd-ms.min-w25(ng-dropdown-multiselect="", options="paymentMethOptions", selected-model="selectedPaymentMethods",
+        extra-settings="paymentMethSettings", checkboxes="true", translation-texts="ruTranslation")
+      .Grid-cell--autoSize.p1
+        label Типы карт:&nbsp;
+        strong.all-selected-marker(ng-show="selectedCardTypes.length === cardTypeOptions.length && " +
+        "cardTypeOptions.length > 0") Все
+        strong.none-selected-marker(ng-show="selectedCardTypes.length === 0 && cardTypeOptions.length > 0") Не выбраны
+        .dd-ms.min-w25(ng-dropdown-multiselect="", options="cardTypeOptions", selected-model="selectedCardTypes",
+        extra-settings="cardTypeSettings", checkboxes="true", translation-texts="ruTranslation")
+      //.Grid-cell--autoSize.p1
+      //  label Номера карт:&nbsp;
+      //  strong.all-selected-marker(ng-show="selectedCards.length === cardOptions.length && " +
+      //  "cardOptions.length > 0") Все
+      //  strong.none-selected-marker(ng-show="selectedCards.length === 0 && cardOptions.length > 0") Не выбраны
+      //  .dd-ms.min-w25(ng-dropdown-multiselect="", options="cardOptions", selected-model="selectedCards",
+      //  extra-settings="cardSettings", checkboxes="true", translation-texts="ruTranslation")
+#trans-buttons.plr1.pb2
+  // Load button
+  button.btn.btn-primary(ng-click="onLoadBtnClick()", ng-disabled='!isFilterChanged || isGettingData || ' +
+  'selectedPaymentMethods.length === 0 || selectedCardTypes.length === 0')
+    i.fa.fa-spinner(ng-class="{ 'fa-pulse' : isGettingData }")
+    span &nbsp;Загрузить
+  // Export button
+  button.btn.btn-default.ml2.mr1(ng-click="onExportBtnClick()", ng-disabled='gridOptions.data.length === 0')
+    i.fa.fa-floppy-o
+    span &nbsp;Экспорт в файл
+  // Export format selector
+  //label.radio-inline CSV
+  //  input(type='radio', name='exportFrmtRadio', value='csv', ng-model="exportFormat")
+  //label.radio-inline PDF
+  //  input(type='radio', name='exportFrmtRadio', value='pdf', ng-model="exportFormat", disabled)
+#trans-table-wrapper.plr1.pb1(ng-hide="gridOptions.data.length === 0 || isFilterChanged")
+  #trans-table.grid(ui-grid="gridOptions", ui-grid-auto-resize, ui-grid-pagination, ui-grid-move-columns,
+  ui-grid-exporter, ui-grid-save-state)
+#trans-nodata-msg-wrapper(ng-show="noData && !isFilterChanged")
+  #trans-nodata-msg Данных по запросу не найдено

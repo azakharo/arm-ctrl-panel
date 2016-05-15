@@ -1,0 +1,30 @@
+h4 Inline
+
+pre Selected date is: {{dt | date:'fullDate' }}
+
+div(style='display:inline-block; min-height:290px;')
+  uib-datepicker.well.well-sm(ng-model='dt', min-date='minDate', show-weeks='true', custom-class='getDayClass(date, mode)')
+h4 Popup
+.row
+  .col-md-6
+    p.input-group
+      input.form-control(type='text', uib-datepicker-popup='{{format}}', ng-model='dt', is-open='status.opened', min-date='minDate', max-date='maxDate', datepicker-options='dateOptions', date-disabled='disabled(date, mode)', ng-required='true')
+      span.input-group-btn
+        button.btn.btn-default(type='button', ng-click='open($event)')
+          i.glyphicon.glyphicon-calendar
+  .col-md-6
+    p.input-group
+      input.form-control(type='date', uib-datepicker-popup='', ng-model='dt', is-open='status.opened', min-date='minDate', max-date='maxDate', datepicker-options='dateOptions', date-disabled='disabled(date, mode)', ng-required='true', close-text='Close')
+      span.input-group-btn
+        button.btn.btn-default(type='button', ng-click='open($event)')
+          i.glyphicon.glyphicon-calendar
+.row
+  .col-md-6
+    label Format:
+    select.form-control(ng-model='format', ng-options='f for f in formats')
+      option
+hr
+button.btn.btn-sm.btn-info(type='button', ng-click='today()') Today
+button.btn.btn-sm.btn-default(type='button', ng-click='setDate(2009, 7, 24)') 2009-08-24
+button.btn.btn-sm.btn-danger(type='button', ng-click='clear()') Clear
+button.btn.btn-sm.btn-default(type='button', ng-click='toggleMin()', uib-tooltip='After today restriction') Min date

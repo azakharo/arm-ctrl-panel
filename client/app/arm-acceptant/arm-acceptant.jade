@@ -1,0 +1,34 @@
+#wrapper.w100.vh100
+  // HEADER
+  #header
+    #header-text Контрольная панель акцептанта
+    // Navi menu
+    #navi-menu
+      .btn-group(uib-dropdown='')
+        button#navi-menu-button.btn.btn-primary.responsive-btn(type='button', uib-dropdown-toggle='', ng-disabled='disabled')
+          span Перейти к&nbsp;&nbsp;
+          span.caret
+        ul(uib-dropdown-menu='', role='menu', aria-labelledby='navi-menu-button')
+          li(role='menuitem', ng-repeat="menuItem in naviMenuItems")
+            a(ng-href='{{menuItem.url}}') {{menuItem.name}}
+    #user-section(ng-show="Auth.getCurrentUser() !== undefined")
+      span(style="margin-right: 10px") Оператор: {{ Auth.getCurrentUser() }}
+      button.btn.btn-default.responsive-btn(ng-click="onSettingsBtnClick()", disabled="disabled",
+      style="margin-right: 5px")
+        i.fa.fa-cog
+      button.btn.btn-default.responsive-btn(ng-click="onLogOutBtnClick()", style="margin-right: 5px")
+        i.fa.fa-sign-out
+  // TABS or another switch for switching between accounting and tariffs
+  uib-tabset#navi-tabset(justified="true")
+    uib-tab(heading='Учет пассажирских перевозок', select="go2accounting()")
+    uib-tab(heading='Справочник (тарифы)', select="go2tariffs()")
+  // CONTENT
+  #content.ui-view
+  // FOOTER
+  footer#footer.text-center Copyright &copy; 2015-2016 &mdash;&nbsp;
+    a(href="http://sarov-itc.ru/" target="_blank") ИТЦ Система-Саров
+    span ,&nbsp;&nbsp;
+    a(href="https://www.me-so.ru/" target="_blank") ДЦ "Микрон"
+  #alert-section.msg-in-center(ng-show='alerts.length > 0')
+    uib-alert.alert-fading-out(ng-repeat="alert in alerts", type="{{alert.type}}", close="alert.close()")
+      span(ng-bind="alert.msg")
