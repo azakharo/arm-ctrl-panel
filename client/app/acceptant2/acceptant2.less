@@ -1,3 +1,62 @@
+#wrapper {
+  padding: 0;
+  margin: 0;
+
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: stretch;
+  justify-content: space-between;
+
+  background: lightgoldenrodyellow;
+}
+
+//**********************
+// header
+
+#header {
+  flex: 0 0 auto;
+  //  height: 3em;
+  //  line-height: 3em;
+  width: 100%;
+  background: #000000;
+  color: #ffffff;
+
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+#header-text {
+  font-size: large;
+  padding-left: 10px;
+  flex: 1;
+}
+
+#navi-menu {
+  padding-right: 10px;
+  flex: none;
+}
+
+#user-section {
+  padding-right: 5px;
+  flex: none;
+}
+
+#btn-settings {
+  margin-left: 20px;
+  margin-right: 10px;
+}
+
+// header
+//**********************
+
+
+/////////////////////////////////////////////////
+// Sidebar
+
 #sidebar {
   background: powderblue;
 }
@@ -12,3 +71,81 @@
   cursor: pointer;
   font-size: medium;
 }
+
+// Sidebar
+/////////////////////////////////////////////////
+
+// CONTENT
+#content {
+  flex: 1;
+  //  background: green;
+  min-height: 0;
+
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: stretch;
+  justify-content: flex-start;
+}
+
+// FOOTER
+#footer  {
+  flex: 0 0 auto;
+  width: 100%;
+}
+
+//++++++++++++++++++++++++++++++++++++++++++++++++++++
+// Adjust layout for small screens
+
+@media screen and (max-width: 800px) {
+
+  #wrapper {
+    display: block !important;
+    height: auto !important;
+  }
+
+  #header {
+    display: block !important;
+    height: auto !important;
+  }
+  #header-text {
+    font-size: medium !important;
+  }
+
+  #content {
+    display: block !important;
+    height: auto !important;
+  }
+
+  #user-section {
+    padding-left: 10px;
+    padding-bottom: 5px;
+  }
+}
+
+// Adjust layout for small screens
+//++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+//================================
+// ALERTS
+
+.msg-in-center {
+  position: absolute;
+  top: 50vh;
+  left: 50vw;
+  width: 26vw;
+  min-height: 10vh;
+  line-height: 10vh;
+  margin: -5vh 0vw 0vh -13vw;
+}
+.alert-fading-out  {
+  animation:8s my_animation;
+}
+
+@keyframes my_animation {
+  from { opacity:1; }
+  to { opacity:0; }
+}
+
+// ALERTS
+//================================
