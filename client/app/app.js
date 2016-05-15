@@ -22,8 +22,6 @@ angular.module('armAcceptantApp', [
   'LocalStorageModule',
   'authService',
   'restService',
-  'TransportStatus',
-  'uptime',
   'loginDlg'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
