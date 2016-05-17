@@ -19,9 +19,9 @@ angular.module('armCtrlPanelApp')
         templateUrl: 'app/ctrl-panel/acceptants.html',
         controller: 'AcceptantsCtrl'
       })
-      .state('ctrl-panel.statistic', {
-        url: '/statistic',
-        templateUrl: 'app/ctrl-panel/statistic.html',
-        controller: 'StatisticCtrl'
+      .state('ctrl-panel.services', {
+        url: '/services',
+        templateUrl: 'app/ctrl-panel/services.html',
+        controller: 'ServicesCtrl'
       });
   });
