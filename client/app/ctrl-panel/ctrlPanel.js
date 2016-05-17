@@ -28,5 +28,10 @@ angular.module('armCtrlPanelApp')
         url: '/esek-activation',
         templateUrl: 'app/ctrl-panel/esekActivation.html',
         controller: 'EsekActivationCtrl'
+      })
+      .state('ctrl-panel.esek-blocking', {
+        url: '/esek-blocking',
+        templateUrl: 'app/ctrl-panel/esekBlocking.html',
+        controller: 'EsekBlockingCtrl'
       });
   });
