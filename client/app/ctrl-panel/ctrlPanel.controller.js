@@ -51,7 +51,6 @@ angular.module('armCtrlPanelApp')
       },
       {
         title: 'ЕСЭК:',
-        state: 'ctrl-panel.esek-activation',
         icon: 'fa-credit-card '
       }
     ];
@@ -81,7 +80,9 @@ angular.module('armCtrlPanelApp')
 
 
     $scope.onMenuItemClick = function (newState) {
-      $state.go(newState);
+      if (newState) {
+        $state.go(newState);
+      }
     };
 
     $scope.isCurrentState = function (newState) {
