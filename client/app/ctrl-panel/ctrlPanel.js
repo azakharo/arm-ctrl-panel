@@ -38,5 +38,10 @@ angular.module('armCtrlPanelApp')
         url: '/esek-replenish',
         templateUrl: 'app/ctrl-panel/esekReplenish.html',
         controller: 'EsekReplenishCtrl'
+      })
+      .state('ctrl-panel.esek-payment', {
+        url: '/esek-payment',
+        templateUrl: 'app/ctrl-panel/esekPayment.html',
+        controller: 'EsekPaymentCtrl'
       });
   });

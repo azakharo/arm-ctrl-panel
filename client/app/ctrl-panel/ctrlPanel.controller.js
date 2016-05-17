@@ -67,13 +67,13 @@ angular.module('armCtrlPanelApp')
         icon: 'fa-lock'
       },
       {
-        title: 'Оплата трансп.ресурса',
+        title: 'Пополнение баланса',
         state: 'ctrl-panel.esek-replenish',
         icon: 'fa-bus'
       },
       {
-        title: 'Статистика',
-        state: 'ctrl-panel.esek-service-stat',
+        title: 'Оплата услуг',
+        state: 'ctrl-panel.esek-payment',
         icon: 'fa-line-chart'
       }
     ];
