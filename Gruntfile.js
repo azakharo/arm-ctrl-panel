@@ -24,7 +24,7 @@ module.exports = function (grunt) {
   require('time-grunt')(grunt);
 
   // Base URL replacements
-  var baseUrl = '/ctrl-panel/';
+  var baseUrl = '/public-dashboard/';
   var replApp = {
     from: 'app/',
     to: baseUrl + 'app/'
