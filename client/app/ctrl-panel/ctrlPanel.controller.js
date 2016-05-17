@@ -19,6 +19,14 @@ angular.module('armCtrlPanelApp')
       {
         url: myRest.getDashboardUrl(),
         name: 'Дашборд'
+      },
+      {
+        url: myRest.getAcceptantUrl(),
+        name: 'Акцептант'
+      },
+      {
+        url: myRest.getUptimeUrl(),
+        name: 'Uptime'
       }
     ];
 
