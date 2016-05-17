@@ -33,5 +33,10 @@ angular.module('armCtrlPanelApp')
         url: '/esek-blocking',
         templateUrl: 'app/ctrl-panel/esekBlocking.html',
         controller: 'EsekBlockingCtrl'
+      })
+      .state('ctrl-panel.esek-replenish', {
+        url: '/esek-replenish',
+        templateUrl: 'app/ctrl-panel/esekReplenish.html',
+        controller: 'EsekReplenishCtrl'
       });
   });

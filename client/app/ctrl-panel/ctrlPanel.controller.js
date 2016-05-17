@@ -68,7 +68,7 @@ angular.module('armCtrlPanelApp')
       },
       {
         title: 'Оплата трансп.ресурса',
-        state: 'ctrl-panel.esek-replenishment',
+        state: 'ctrl-panel.esek-replenish',
         icon: 'fa-bus'
       },
       {
