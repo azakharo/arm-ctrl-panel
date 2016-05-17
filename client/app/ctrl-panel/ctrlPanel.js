@@ -14,10 +14,10 @@ angular.module('armCtrlPanelApp')
         templateUrl: 'app/ctrl-panel/emitters.html',
         controller: 'EmittersCtrl'
       })
-      .state('ctrl-panel.transactions', {
-        url: '/transactions',
-        templateUrl: 'app/ctrl-panel/transactions.html',
-        controller: 'TransactionsCtrl'
+      .state('ctrl-panel.acceptants', {
+        url: '/acceptants',
+        templateUrl: 'app/ctrl-panel/acceptants.html',
+        controller: 'AcceptantsCtrl'
       })
       .state('ctrl-panel.statistic', {
         url: '/statistic',
