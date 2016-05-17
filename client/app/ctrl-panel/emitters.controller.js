@@ -1,5 +1,5 @@
 'use strict';
 
 angular.module('armCtrlPanelApp')
-  .controller('HardwareCtrl', function ($scope) {
+  .controller('EmittersCtrl', function ($scope) {
   });

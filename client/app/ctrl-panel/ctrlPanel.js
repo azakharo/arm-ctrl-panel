@@ -9,10 +9,10 @@ angular.module('armCtrlPanelApp')
         templateUrl: 'app/ctrl-panel/ctrlPanel.html',
         controller: 'CtrlPanelCtrl'
       })
-      .state('ctrl-panel.hardware', {
-        url: '/hardware',
-        templateUrl: 'app/ctrl-panel/hardware.html',
-        controller: 'HardwareCtrl'
+      .state('ctrl-panel.emitters', {
+        url: '/emitters',
+        templateUrl: 'app/ctrl-panel/emitters.html',
+        controller: 'EmittersCtrl'
       })
       .state('ctrl-panel.transactions', {
         url: '/transactions',

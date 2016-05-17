@@ -27,21 +27,50 @@ angular.module('armCtrlPanelApp')
 
     $scope.menuItems = [
       {
-        title: 'Оборудование',
-        state: 'ctrl-panel.hardware',
+        title: 'Эмитенты',
+        state: 'ctrl-panel.emitters',
+        icon: 'fa-files-o'
+      },
+      {
+        title: 'Акцептанты',
+        state: 'ctrl-panel.acceptants',
+        icon: 'fa-check-circle-o '
+      },
+      {
+        title: 'Оказываемые услуги',
+        state: 'ctrl-panel.services',
+        icon: 'fa-list'
+      },
+      {
+        title: 'ЕСЭК:',
+        state: 'ctrl-panel.esek-activation',
+        icon: 'fa-credit-card '
+      }
+    ];
+
+    $scope.esekMenuSubItems = [
+      {
+        title: 'Активация',
+        state: 'ctrl-panel.esek-activation',
+        icon: 'fa-plus'
+      },
+      {
+        title: 'Блокировка',
+        state: 'ctrl-panel.esek-blocking',
+        icon: 'fa-lock'
+      },
+      {
+        title: 'Оплата трансп.ресурса',
+        state: 'ctrl-panel.esek-replenishment',
         icon: 'fa-bus'
       },
       {
-        title: 'Транзакции',
-        state: 'ctrl-panel.transactions',
-        icon: 'fa-table'
-      },
-      {
         title: 'Статистика',
-        state: 'ctrl-panel.statistic',
+        state: 'ctrl-panel.esek-service-stat',
         icon: 'fa-line-chart'
       }
     ];
+
 
     $scope.onMenuItemClick = function (newState) {
       $state.go(newState);

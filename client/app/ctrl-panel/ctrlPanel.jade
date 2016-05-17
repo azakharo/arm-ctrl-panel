@@ -6,6 +6,12 @@ snap-drawer#sidebar
       a(ng-click="onMenuItemClick(mi.state)", snap-close)
         i.fa.fa-lg(ng-class="mi.icon")
         span.ml1 {{ mi.title }}
+    li.sidebar-menu-item(role='presentation', ng-repeat="mi in esekMenuSubItems",
+    ng-class="{ 'active': isCurrentState(mi.state) }")
+      a(ng-click="onMenuItemClick(mi.state)", snap-close)
+        span.ml2 &nbsp;
+        i.fa.fa-lg(ng-class="mi.icon")
+        span.ml1 {{ mi.title }}
 snap-content(snap-opt-disable="'right'")
   #wrapper.w100.vh100
     span(us-spinner="{radius:30, width:8, length: 16}", spinner-on="isGettingData")
