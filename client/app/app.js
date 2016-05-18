@@ -14,6 +14,7 @@ angular.module('armCtrlPanelApp', [
   'ui.grid.exporter',
   'ui.grid.grouping',
   'ui.grid.saveState',
+  'smart-table',
   'ngPromiseExtras',
   'snap',
   'angularSpinner',
