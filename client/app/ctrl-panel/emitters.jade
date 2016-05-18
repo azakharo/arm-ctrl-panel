@@ -6,13 +6,14 @@
     .Grid-cell--autoSize.pl1
       select#app-select.form-control(ng-model='appSelected', ng-options='app as app.title for app in apps', ng-change='onSelectedAppChanged()')
   // List of emitters for the selected app
-  .text-large.mt2 Список эмитентов для выбранного приложения:
-  table.table(st-table='emitters')
-    thead
-      tr
-        th Название
-        th Описание
-    tbody
-      tr(ng-repeat='e in emitters')
-        td {{e.title}}
-        td {{e.description}}
+  .text-large.mt2.mb1 Список эмитентов для выбранного приложения:
+  .emitters-table-wrapper
+    table(st-table='emitters')
+      thead
+        tr
+          th Название
+          th Описание
+      tbody
+        tr(ng-repeat='e in emitters')
+          td {{e.title}}
+          td {{e.description}}
