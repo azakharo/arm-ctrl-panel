@@ -1,2 +1,7 @@
 #emitters-page-content.p1
-  p Эмитенты:
+  .Grid.Grid--center
+    .Grid-cell--autoSize
+      label(for="app-select") Выберите приложение:
+    .Grid-cell--autoSize.pl1
+      select#app-select.form-control(ng-model='appSelected', ng-options='app as app.title for app in apps', ng-change='onSelectedAppChanged()')
+  pre {{ emitters | json }}

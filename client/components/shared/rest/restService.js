@@ -107,6 +107,14 @@ mod.service(
       return ( request.then(handleSuccess, handleError) );
     }
 
+    function getAppProviders(appID) {
+      var request = $http({
+        method: "get",
+        url: baseURL + format('applications/{}/providers', appID)
+      });
+      return ( request.then(handleSuccess, handleError) );
+    }
+
     function getAllTransactions() {
       var transactions = [];
       var deffered = $q.defer();
@@ -2156,6 +2164,7 @@ mod.service(
       getAccountTransactions: getAccountTransactions,
       getApps:          getApps,
       getAppCurrencies: getAppCurrencies,
+      getAppProviders: getAppProviders,
       getAllTransactions: getAllTransactions,
       getVehicles:        getVehicles,
       getTerminals:       getTerminals,
