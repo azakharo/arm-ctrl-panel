@@ -1,2 +1,15 @@
 #acceptants-page-content.p1
-  p Акцептанты:
+  // Acceptant list
+  .text-large.mb1 Акцептанты, зарегистрированные в системе:
+  .red-table-wrapper
+    table(st-table='acceptants')
+      thead
+        tr
+          th Приложение
+          th Акцептант
+          th Описание
+      tbody
+        tr(ng-repeat='a in acceptants')
+          td {{a.app.title}}
+          td {{a.title}}
+          td {{a.description}}
