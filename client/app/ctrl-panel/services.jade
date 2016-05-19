@@ -8,7 +8,9 @@
   // List of emitters for the selected app
   #services-table-title.text-large.mt2.mb1 Список оказываемых услуг для выбранного приложения:
   // Service list
-  #services-tariffs-table-wrapper.plr1.pb1(ng-hide="gridOptions.data.length === 0")
-    #services-tariffs-table.grid(ui-grid="gridOptions", ui-grid-auto-resize, ui-grid-grouping)
+  #services-tariffs-table.plr1.pb1.grid(
+  ng-hide="gridOptions.data.length === 0",
+  ui-grid="gridOptions", ui-grid-auto-resize, ui-grid-grouping)
+  // No data message
   #services-nodata-msg-wrapper(ng-show="gridOptions.data.length === 0")
     .nodata-msg Услуги не найдены
