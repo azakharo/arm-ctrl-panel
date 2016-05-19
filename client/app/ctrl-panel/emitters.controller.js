@@ -28,10 +28,11 @@ angular.module('armCtrlPanelApp')
     function updateEmitters() {
       myRest.getAppProviders($scope.appSelected.id).then(
         function (providers) {
-          $scope.emitters = _.filter(providers, function (prov) {
-            // TODO use real filtering here
-            return prov.meta[0] === "park 1";
-          });
+          // TODO use real filtering here
+          //$scope.emitters = _.filter(providers, function (prov) {
+          //  return prov.meta[0] === "park 1";
+          //});
+          $scope.emitters = providers;
         }
       );
     }
