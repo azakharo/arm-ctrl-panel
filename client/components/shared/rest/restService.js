@@ -1960,48 +1960,13 @@ mod.service(
 
     // Acceptant prices
     function getTariffs() {
-      let tariffs = [];
       let deffered = $q.defer();
 
       getTransportApp().then(
         function (app) {
-          if (!app) {
-            deffered.resolve([]);
-            return deffered.promise;
-          }
-          $q.all([
-            getCurrencies(),
-            getPrices(app.id),
-            getServices(app.id)
-          ]).then(
-            function (values) {
-              let currencies = values[0];
-              let prices = values[1];
-              let services = values[2];
-
-              prices.forEach(function (price) {
-                // Find currency
-                let curr = _.find(currencies, curr => curr.srvID === price.currencyId);
-                let service = _.find(services, srv => srv.id === price.serviceId);
-
-                if (!curr) {
-                  return;
-                }
-
-                let tarr = {
-                  currency: curr,
-                  price: price.value,
-                  name: curr.name,
-                  desc: service ? service.title : '',
-                  type: (curr.isAbonnement) ? 'Проездной' : 'Разовый',
-                  activePeriodStart: isInt(price.timeframe.startTimestamp) ? price.timeframe.startTimestamp : null,
-                  activePeriodFinish: isInt(price.timeframe.finishTimestamp) ? price.timeframe.finishTimestamp : null
-                };
-
-                tariffs.push(tarr);
-              });
-
-              deffered.resolve(tariffs);
+          getAppTariffs(app).then(
+            function (tars) {
+              deffered.resolve(tars);
             },
             function (reason) {
               deffered.reject(reason);
@@ -2010,6 +1975,57 @@ mod.service(
         },
         function (reason) {
           deffered.resolve([]);
+        }
+      );
+
+      return deffered.promise;
+    }
+
+    function getAppTariffs(app) {
+      let tariffs = [];
+      let deffered = $q.defer();
+
+      if (!app) {
+        deffered.resolve([]);
+        return deffered.promise;
+      }
+
+      $q.all([
+        getCurrencies(),
+        getPrices(app.id),
+        getServices(app.id)
+      ]).then(
+        function (values) {
+          let currencies = values[0];
+          let prices = values[1];
+          let services = values[2];
+
+          prices.forEach(function (price) {
+            // Find currency
+            let curr = _.find(currencies, curr => curr.srvID === price.currencyId);
+            let service = _.find(services, srv => srv.id === price.serviceId);
+
+            if (!curr) {
+              return;
+            }
+
+            let tarr = {
+              currency: curr,
+              price: price.value,
+              name: curr.name,
+              desc: service ? service.title : '',
+              type: (curr.isAbonnement) ? 'Проездной' : 'Разовый',
+              activePeriodStart: isInt(price.timeframe.startTimestamp) ? price.timeframe.startTimestamp : null,
+              activePeriodFinish: isInt(price.timeframe.finishTimestamp) ? price.timeframe.finishTimestamp : null
+            };
+
+            tariffs.push(tarr);
+          });
+
+          deffered.resolve(tariffs);
+        },
+        function (reason) {
+          deffered.reject(reason);
         }
       );
 
@@ -2272,7 +2288,8 @@ mod.service(
       //========================================================
 
       // Acceptant prices
-      getTariffs: getTariffs,
+      getTariffs: getTariffs, // tariffs for the transport app
+      getAppTariffs: getAppTariffs,
 
       // login
       login: login,

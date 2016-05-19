@@ -1,1 +1,2 @@
-
+* Token expired. After login need to restore the prev page.
+* acceptants, emitters: no data msg like in the acceptant.

@@ -1,2 +1,11 @@
 #services-page-content.p1
-  p Оказываемые услуги:
+  // Application selector
+  .Grid.Grid--center
+    .Grid-cell--autoSize
+      label(for="app-select") Выберите приложение:
+    .Grid-cell--autoSize.pl1
+      select#app-select.form-control(ng-model='appSelected', ng-options='app as app.title for app in apps', ng-change='onSelectedAppChanged()')
+  // List of emitters for the selected app
+  .text-large.mt2.mb1 Список оказываемых услуг для выбранного приложения:
+  // Service list
+  #tariffs-table.grid(ui-grid="gridOptions", ui-grid-auto-resize, ui-grid-grouping)
