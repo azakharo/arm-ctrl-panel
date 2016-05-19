@@ -38,6 +38,11 @@ angular.module('armCtrlPanelApp')
     $scope.gridOptions = {
       onRegisterApi: function(gridApi){
         $scope.gridApi = gridApi;
+
+        // Expand all rows when loading the grid
+        $scope.gridApi.grid.registerDataChangeCallback(function() {
+          $scope.gridApi.treeBase.expandAllRows();
+        });
       }
     };
     $scope.gridOptions.columnDefs = [
