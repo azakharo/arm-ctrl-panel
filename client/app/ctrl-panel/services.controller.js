@@ -46,7 +46,7 @@ angular.module('armCtrlPanelApp')
         name: 'desc'
       },
       {
-        displayName: 'Под-услуга',
+        displayName: 'Детали',
         field: 'name'
       }
     ];
