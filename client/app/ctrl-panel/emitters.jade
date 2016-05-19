@@ -1,19 +1,15 @@
 #emitters-page-content.p1
-  // Application selector
-  .Grid.Grid--center
-    .Grid-cell--autoSize
-      label(for="app-select") Выберите приложение:
-    .Grid-cell--autoSize.pl1
-      select#app-select.form-control(ng-model='appSelected', ng-options='app as app.title for app in apps', ng-change='onSelectedAppChanged()')
-  // List of emitters for the selected app
-  .text-large.mt2.mb1 Список эмитентов для выбранного приложения:
+  // Emitter list
+  .text-large.mb1 Эмитенты, зарегистрированные в системе:
   .blue-table-wrapper
     table(st-table='emitters')
       thead
         tr
-          th Название
+          th Приложение
+          th Эмитент
           th Описание
       tbody
         tr(ng-repeat='e in emitters')
+          td {{e.app.title}}
           td {{e.title}}
           td {{e.description}}

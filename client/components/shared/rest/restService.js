@@ -115,6 +115,38 @@ mod.service(
       return ( request.then(handleSuccess, handleError) );
     }
 
+    function getAllProviders() {
+      var providers = [];
+      var deffered = $q.defer();
+
+      getApps().then(
+        function (apps) {
+          var appInd = 0;
+          apps.forEach(function (app) {
+            getAppProviders(app.id).then(
+              function (appProviders) {
+                appProviders.forEach(function (prov) {
+                  prov.app = app;
+                });
+                providers = providers.concat(appProviders);
+
+                // if last app, then resolve
+                if (appInd === apps.length - 1) {
+                  deffered.resolve(providers);
+                }
+
+                appInd += 1;
+              });
+          });
+        },
+        function (reason) {
+          deffered.reject(reason);
+        }
+      );
+
+      return deffered.promise;
+    }
+
     function getAllTransactions() {
       var transactions = [];
       var deffered = $q.defer();
@@ -2165,6 +2197,7 @@ mod.service(
       getApps:          getApps,
       getAppCurrencies: getAppCurrencies,
       getAppProviders: getAppProviders,
+      getAllProviders: getAllProviders,
       getAllTransactions: getAllTransactions,
       getVehicles:        getVehicles,
       getTerminals:       getTerminals,
