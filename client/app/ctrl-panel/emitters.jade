@@ -7,7 +7,7 @@
       select#app-select.form-control(ng-model='appSelected', ng-options='app as app.title for app in apps', ng-change='onSelectedAppChanged()')
   // List of emitters for the selected app
   .text-large.mt2.mb1 Список эмитентов для выбранного приложения:
-  .emitters-table-wrapper
+  .blue-table-wrapper
     table(st-table='emitters')
       thead
         tr
