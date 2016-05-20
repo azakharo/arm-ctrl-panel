@@ -1,7 +1,7 @@
 #emitters-page-content.p1
   // Emitter list
   .text-large.mb1 Эмитенты, зарегистрированные в системе:
-  .blue-table-wrapper
+  .blue-table-wrapper(ng-show="emitters.length > 0")
     table(st-table='emitters')
       thead
         tr
@@ -13,3 +13,4 @@
           td {{e.app.title}}
           td {{e.title}}
           td {{e.description}}
+  .nodata-msg(ng-show="emitters.length === 0") Организации-эмитенты не найдены

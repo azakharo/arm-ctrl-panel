@@ -1,7 +1,7 @@
 #acceptants-page-content.p1
   // Acceptant list
   .text-large.mb1 Акцептанты, зарегистрированные в системе:
-  .red-table-wrapper
+  .red-table-wrapper(ng-show="acceptants.length > 0")
     table(st-table='acceptants')
       thead
         tr
@@ -13,3 +13,4 @@
           td {{a.app.title}}
           td {{a.title}}
           td {{a.description}}
+  .nodata-msg(ng-show="acceptants.length === 0") Организации-акцептанты не найдены
