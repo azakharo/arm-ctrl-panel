@@ -5,6 +5,7 @@ angular.module('armCtrlPanelApp')
     /////////////////////////////////////////////////////////
     // Initialization
 
+    $scope.isGettingData = true;
     $scope.apps = [];
     $scope.appSelected = null;
     $scope.tariffs = [];
@@ -24,10 +25,15 @@ angular.module('armCtrlPanelApp')
     };
 
     function updateTariffs() {
+      $scope.isGettingData = true;
       myRest.getAppTariffs($scope.appSelected).then(
         function (tars) {
           $scope.gridOptions.data = tars;
           setGrouping();
+          $scope.isGettingData = false;
+        },
+        function (reason) {
+          $scope.isGettingData = false;
         }
       );
     }

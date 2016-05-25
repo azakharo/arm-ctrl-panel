@@ -13,4 +13,4 @@
           td {{a.app.title}}
           td {{a.title}}
           td {{a.description}}
-  .nodata-msg(ng-show="acceptants.length === 0") Организации-акцептанты не найдены
+  .nodata-msg(ng-show="acceptants.length === 0 && !isGettingData") Организации-акцептанты не найдены

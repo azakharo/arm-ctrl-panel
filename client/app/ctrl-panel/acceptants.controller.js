@@ -12,11 +12,16 @@ angular.module('armCtrlPanelApp')
     /////////////////////////////////////////////////////////
 
     function updateAcceptants() {
+      $scope.isGettingData = true;
       myRest.getAllProviders().then(
         function (providers) {
           $scope.acceptants = _.filter(providers, function (prov) {
             return prov.meta && prov.meta.isAcceptant;
           });
+          $scope.isGettingData = false;
+        },
+        function (reason) {
+          $scope.isGettingData = false;
         }
       );
     }
