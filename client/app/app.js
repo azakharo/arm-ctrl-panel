@@ -75,9 +75,11 @@ angular.module('armCtrlPanelApp', [
   .run(function ($rootScope, $state, Auth, $log) {
     // Redirect to login if route requires auth and you're not logged in
     $rootScope.$on('$stateChangeStart', function (event, next) {
+      if (next.name !== 'login') {
+        $rootScope.state2routeAfterLogin = next.name;
+      }
       if (next.authenticate && !Auth.isLoggedIn()) {
         $log.debug('need auth, redirect to login');
-        $rootScope.state2routeAfterLogin = next.name;
         event.preventDefault();
         $state.go('login');
       }
