@@ -42,7 +42,7 @@ angular.module('armCtrlPanelApp', [
 
   // local storage app prefix
   .config(['localStorageServiceProvider', function(localStorageServiceProvider){
-    localStorageServiceProvider.setPrefix('acceptant');
+    localStorageServiceProvider.setPrefix('public-arm');
   }])
 
   .factory('authInterceptor', function ($rootScope, $q, $cookieStore, $location, $log) {
