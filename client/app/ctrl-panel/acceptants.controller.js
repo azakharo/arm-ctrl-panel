@@ -16,7 +16,7 @@ angular.module('armCtrlPanelApp')
       myRest.getAllProviders().then(
         function (providers) {
           $scope.acceptants = _.filter(providers, function (prov) {
-            return prov.meta && prov.meta.isAcceptant;
+            return prov.meta && prov.meta.roles && _.includes(prov.meta.roles, "acceptant");
           });
           $scope.isGettingData = false;
         },
