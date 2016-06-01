@@ -15,6 +15,10 @@ mod.service(
     var acceptantUrl = '/acceptant';
     var uptimeUrl = '/uptime';
     var dashboardUrl = '/dashboard';
+    const acceptant1path = '/arm/accounting/stat-common-chart';
+    const acceptant2path = '/acceptant2/statistic';
+    let acceptant1Url = '';
+    let acceptant2Url = '';
     if (isRestDebug) {
       var serverAddr = 'https://cp.sarov-itc.ru';
       baseURL = serverAddr + baseURL;
@@ -26,6 +30,12 @@ mod.service(
       acceptantUrl = serverAddr + acceptantUrl;
       uptimeUrl = serverAddr + uptimeUrl;
       dashboardUrl = serverAddr + dashboardUrl;
+      acceptant1Url = '/#' + acceptant1path;
+      acceptant2Url = '/#' + acceptant2path;
+    }
+    else {
+      acceptant1Url = acceptantUrl + '/#' + acceptant1path;
+      acceptant2Url = acceptantUrl + '/#' + acceptant2path;
     }
 
     function getBaseURL() {
@@ -42,6 +52,14 @@ mod.service(
 
     function getDashboardUrl() {
       return dashboardUrl;
+    }
+
+    function getAcceptant1Url() {
+      return acceptant1Url;
+    }
+
+    function getAcceptant2Url() {
+      return acceptant2Url;
     }
 
     //$http.defaults.headers.common['Authorization'] = 'Basic ' + btoa('admin:admin');
@@ -2299,6 +2317,8 @@ mod.service(
 
       // arm urls
       getAcceptantUrl: getAcceptantUrl,
+      getAcceptant1Url: getAcceptant1Url,
+      getAcceptant2Url: getAcceptant2Url,
       getUptimeUrl: getUptimeUrl,
       getDashboardUrl: getDashboardUrl,
 
