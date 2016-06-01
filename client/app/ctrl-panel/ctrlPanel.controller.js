@@ -21,8 +21,12 @@ angular.module('armCtrlPanelApp')
         name: 'Дашборд'
       },
       {
-        url: myRest.getAcceptantUrl(),
-        name: 'Акцептант'
+        url: myRest.getAcceptant1Url(),
+        name: 'Акцептант 1'
+      },
+      {
+        url: myRest.getAcceptant2Url(),
+        name: 'Акцептант 2'
       },
       {
         url: myRest.getUptimeUrl(),
