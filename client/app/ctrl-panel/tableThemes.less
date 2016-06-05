@@ -175,7 +175,7 @@
 //===================================================================
 // Dark responsive table
 
-@breakpoint-alpha: 480px; // adjust to your needs
+@tbl-dark-responsive-breakpoint: 480px; // adjust to your needs
 
 .tbl-dark-responsive {
   margin: 1em 0;
@@ -209,7 +209,7 @@
       display: inline-block;
       // end options
 
-      @media (min-width: @breakpoint-alpha) {
+      @media (min-width: @tbl-dark-responsive-breakpoint) {
         display: none;
       }
     }
@@ -218,7 +218,7 @@
   th, td {
     text-align: left;
 
-    @media (min-width: @breakpoint-alpha) {
+    @media (min-width: @tbl-dark-responsive-breakpoint) {
       display: table-cell;
       padding: .25em .5em;
 
@@ -244,7 +244,7 @@
 
   th, td {
     margin: .5em 1em;
-    @media (min-width: @breakpoint-alpha) {
+    @media (min-width: @tbl-dark-responsive-breakpoint) {
       padding: 1em !important;
     }
   }

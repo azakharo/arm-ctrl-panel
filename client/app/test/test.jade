@@ -1,23 +1,26 @@
-h1 RWD List to Table
-table.tbl-dark-responsive
-  tr
-    th Movie Title
-    th Genre
-    th Year
-    th Gross
-  tr
-    td(data-th='Movie Title') Star Wars
-    td(data-th='Genre') Adventure, Sci-fi
-    td(data-th='Year') 1977
-    td(data-th='Gross') $460,935,665
-  tr
-    td(data-th='Movie Title') Howard The Duck
-    td(data-th='Genre') "Comedy"
-    td(data-th='Year') 1986
-    td(data-th='Gross') $16,295,774
-  tr
-    td(data-th='Movie Title') American Graffiti
-    td(data-th='Genre') Comedy, Drama
-    td(data-th='Year') 1973
-    td(data-th='Gross') $115,000,000
-p Drag window (in editor or full page view) to see the effect.
+table
+  thead
+    tr
+      th(colspan='3') Atividades do Projeto
+    tr
+      th #
+      th(colspan='2') Atividade
+  tbody
+    tr
+      td 1
+      td Atualizar página da equipe
+      td
+        i.fa.fa-pencil.button.alterar
+        i.fa.fa-trash.button.excluir
+    tr
+      td 2
+      td Design da nova marca
+      td
+        i.fa.fa-pencil.button.alterar
+        i.fa.fa-trash.button.excluir
+    tr
+      td 3
+      td Encontrar desenvolvedor front-end
+      td
+        i.fa.fa-pencil.button.alterar
+        i.fa.fa-trash.button.excluir
