@@ -1,26 +1,54 @@
-table.tbl-with-actions
+table.tbl-blur-on-hover
   thead
     tr
-      th(colspan='3') Atividades do Projeto
-    tr
-      th #
-      th(colspan='2') Atividade
+      th Option
+      th Default
+      th Description
   tbody
     tr
-      td 1
-      td Atualizar página da equipe
       td
-        i.fa.fa-pencil.button.alterar
-        i.fa.fa-trash.button.excluir
+        strong showSpeed
+      td 15
+      td The speed of the show/reveal
     tr
-      td 2
-      td Design da nova marca
       td
-        i.fa.fa-pencil.button.alterar
-        i.fa.fa-trash.button.excluir
+        strong showEasing
+      td 'linear'
+      td The easing of the show/reveal
     tr
-      td 3
-      td Encontrar desenvolvedor front-end
       td
-        i.fa.fa-pencil.button.alterar
-        i.fa.fa-trash.button.excluir
+        strong hideSpeed
+      td 50
+      td The speed of the hide/conceal
+    tr
+      td
+        strong hideEasing
+      td 'linear'
+      td The easing of the hide/conceal
+    tr
+      td
+        strong width
+      td 'auto'
+      td
+        | The width that the data will be truncated to -
+        em ('auto' or px amount)
+    tr
+      td
+        strong ellipsis
+      td true
+      td Set to true to enable the ellipsis
+    tr
+      td
+        strong title
+      td false
+      td Set to true to show the full data on hover
+    tr
+      td
+        strong afterShow
+      td  $.noop
+      td The callback fired after the show/reveal
+    tr
+      td
+        strong afterHide
+      td $.noop
+      td The callback fired after the hide/conceal
