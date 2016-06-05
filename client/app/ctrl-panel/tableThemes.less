@@ -112,3 +112,72 @@
 
 // Red table style
 /////////////////////////////////////////////////////////////////////
+
+
+//*******************************************************************
+// SeaWater table
+
+// Default options for table style
+@tbl-seawater-background-color: #FFF;
+@tbl-seawater-text-color: #024457;
+@tbl-seawater-outer-border: 1px solid #167F92;
+@tbl-seawater-cell-border: 1px solid #D9E4E6;
+
+// Extra options for table style
+@tbl-seawater-border-radius: 10px;
+@tbl-seawater-highlight-color: #EAF3F3;
+@tbl-seawater-header-background-color: #167F92;
+@tbl-seawater-header-text-color: #FFF;
+@tbl-seawater-header-border: 1px solid #FFF;
+
+//@breakpoint: @table-breakpoint,
+//@background-color: @table-background-color,
+//@text-color: @table-text-color,
+//@outer-border: @table-outer-border,
+//@cell-border: @table-cell-border,
+//@border-radius: none,
+//@highlight-color: none,
+//@header-background-color: @table-background-color,
+//@header-text-color: @table-text-color,
+//@header-border: @table-cell-border) {
+
+.tbl-seawater {
+  margin: 1em 0;
+  width: 100%;
+  overflow: hidden;
+  background: @tbl-seawater-background-color;
+  color: @tbl-seawater-text-color;
+  border-radius: @tbl-seawater-border-radius;
+  border: @tbl-seawater-outer-border;
+  border-collapse: separate;
+  border-spacing: 2px;
+
+  tr {
+    border: @tbl-seawater-cell-border;
+    &:nth-child(odd) { // highlight the odd rows with a color
+      background-color: @tbl-seawater-highlight-color;
+    }
+  }
+
+  th {
+    border: @tbl-seawater-header-border;
+    background-color: @tbl-seawater-header-background-color;
+    color: @tbl-seawater-header-text-color;
+    padding: 1em;
+  }
+
+  td {
+    word-wrap: break-word;
+    max-width: 7em;
+    padding: 1em;
+    border: @tbl-seawater-cell-border;
+  }
+
+  th, td {
+    text-align: left;
+    margin: .5em 1em;
+  }
+}
+
+// SeaWater table
+//*******************************************************************
