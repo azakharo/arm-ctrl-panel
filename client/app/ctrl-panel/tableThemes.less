@@ -420,7 +420,6 @@
 //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 // Greenish table
 
-
 .tbl-greenish {
 
   background: linear-gradient(to right, #25c481, #25b7c4);
@@ -485,3 +484,78 @@
 
 // Greenish table
 //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+/////////////////////////////////////////////////////////////////////
+// dark yellow table
+
+.tbl-dark-yellow {
+
+  @import url(http://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  line-height: 1.42em;
+  color: #A7A1AE;
+  background-color: #1F2739;
+
+  text-align: left;
+  overflow: hidden;
+  width: 80%;
+  margin: 0 auto;
+  display: table;
+
+  th {
+    font-weight: bold;
+    font-size: 1.2em;
+    text-align: left;
+    color: #185875;
+  }
+
+  td {
+    font-weight: normal;
+    font-size: 1em;
+    box-shadow: 0 2px 2px -2px #0E1119;
+  }
+
+  td, th {
+    padding: 2em;
+  }
+
+  /* Background-color of the odd rows */
+  tr:nth-child(odd) {
+    background-color: #323C50;
+  }
+
+  /* Background-color of the even rows */
+  tr:nth-child(even) {
+    background-color: #2C3446;
+  }
+
+  th {
+    background-color: #1F2739;
+  }
+
+  td:first-child { color: #FB667A; }
+
+  tr:hover {
+    background-color: #464A52;
+    box-shadow: 0 6px 6px -6px #0E1119;
+  }
+
+  td:hover {
+    background-color: #FFF842;
+    color: #403E10;
+//    font-weight: bold;
+
+    box-shadow: #7F7C21 -1px 1px, #7F7C21 -2px 2px, #7F7C21 -3px 3px, #7F7C21 -4px 4px, #7F7C21 -5px 5px, #7F7C21 -6px 6px;
+    transform: translate3d(6px, -6px, 0);
+
+    transition-delay: 0s;
+    transition-duration: 0.4s;
+    transition-property: all;
+    transition-timing-function: line;
+  }
+}
+
+// dark yellow table
+/////////////////////////////////////////////////////////////////////
