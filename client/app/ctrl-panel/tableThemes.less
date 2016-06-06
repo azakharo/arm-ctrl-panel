@@ -503,6 +503,7 @@
   width: 80%;
   margin: 0 auto;
   display: table;
+  table-layout: fixed;
 
   th {
     font-weight: bold;
@@ -535,7 +536,9 @@
     background-color: #1F2739;
   }
 
-  td:first-child { color: #FB667A; }
+  td:first-child {
+    color: #FB667A;
+  }
 
   tr:hover {
     background-color: #464A52;
@@ -545,7 +548,7 @@
   td:hover {
     background-color: #FFF842;
     color: #403E10;
-//    font-weight: bold;
+    font-weight: bold;
 
     box-shadow: #7F7C21 -1px 1px, #7F7C21 -2px 2px, #7F7C21 -3px 3px, #7F7C21 -4px 4px, #7F7C21 -5px 5px, #7F7C21 -6px 6px;
     transform: translate3d(6px, -6px, 0);
