@@ -3,6 +3,8 @@
 angular.module('armCtrlPanelApp')
   .controller('EsekReplenishCtrl', function ($scope, myRest) {
 
+    $scope.data = {};
+
     //=======================================================
     // Date range picker
 
@@ -42,13 +44,17 @@ angular.module('armCtrlPanelApp')
       myRest.getStatReplenishment($scope.datePicker.date.startDate, $scope.datePicker.date.endtDate).then(
         function (data) {
           $scope.isGettingData = false;
+          $scope.data = data;
           log(data);
         },
         function (reason) {
           $scope.isGettingData = false;
+          $scope.data = {};
         }
       );
     }
+
+    $scope.isObjectEmpty = isObjectEmpty;
 
     $scope.$watch('datePicker.date', function () {
       getData();

@@ -8,3 +8,5 @@
   ng-disabled='isGettingData',
   uib-tooltip="Выбрать дату или период", tooltip-append-to-body="true", tooltip-placement="auto bottom")
     i.glyphicon.glyphicon-calendar
+  // NO DATA message
+  .nodata-msg(ng-show="(!data || isObjectEmpty(data) || isObjectEmpty(data.total)) && !isGettingData") НЕТ ДАННЫХ
