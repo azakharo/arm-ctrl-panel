@@ -55,6 +55,7 @@ angular.module('armCtrlPanelApp')
     }
 
     $scope.isObjectEmpty = isObjectEmpty;
+    $scope.getObjectPropNames = getObjectPropNames;
 
     $scope.$watch('datePicker.date', function () {
       getData();

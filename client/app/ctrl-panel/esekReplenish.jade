@@ -1,12 +1,24 @@
 #esek-replenish-page-content.p1
+  // Page Title
   span.text-xlarge Статистика пополнений баланса с помощью ЕСЭК&nbsp;
   span.text-large за&nbsp;
-  strong#trans-time-period.text-large.mr1 {{ datePicker.date | DatePickerFilter}}
   // Time period selector
+  strong#esek-replenish-time-period.text-large.mr1 {{ datePicker.date | DatePickerFilter}}
   button.btn.btn-default.responsive-btn(date-range-picker, ng-model="datePicker.date",
   options="dateRangePickerOpts", max="today",
   ng-disabled='isGettingData',
   uib-tooltip="Выбрать дату или период", tooltip-append-to-body="true", tooltip-placement="auto bottom")
     i.glyphicon.glyphicon-calendar
+  // Statistic Results:
+  #esek-replenish-stat(ng-show="data && !isObjectEmpty(data) && !isObjectEmpty(data.total)")
+    table(st-table='acceptants')
+      thead
+        tr
+          th Способ оплаты
+          th Кол-во
+      tbody
+        tr(ng-repeat='propName in getObjectPropNames(data.total)')
+          td {{propName}}
+          td {{data.total[propName]}}
   // NO DATA message
   .nodata-msg(ng-show="(!data || isObjectEmpty(data) || isObjectEmpty(data.total)) && !isGettingData") НЕТ ДАННЫХ
