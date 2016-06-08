@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('armCtrlPanelApp')
-  .controller('EsekReplenishCtrl', function ($scope) {
+  .controller('EsekReplenishCtrl', function ($scope, myRest) {
 
     //=======================================================
     // Date range picker
@@ -36,11 +36,23 @@ angular.module('armCtrlPanelApp')
     // Date range picker
     //=======================================================
 
-    $scope.$watch('datePicker.date', function () {
-      log('time period changed');
-    });
 
-    
+    function getData() {
+      $scope.isGettingData = true;
+      myRest.getStatReplenishment($scope.datePicker.date.startDate, $scope.datePicker.date.endtDate).then(
+        function (data) {
+          $scope.isGettingData = false;
+          log(data);
+        },
+        function (reason) {
+          $scope.isGettingData = false;
+        }
+      );
+    }
+
+    $scope.$watch('datePicker.date', function () {
+      getData();
+    });
 
   }) // controller
 

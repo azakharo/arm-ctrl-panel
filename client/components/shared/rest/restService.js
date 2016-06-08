@@ -1976,6 +1976,62 @@ mod.service(
     //========================================================
 
 
+    //********************************************************
+    // Public dashboard stat
+
+    function getStatReplenishment(dtStart, dtEnd) {
+      if (isMyDebug) {
+        return getStatReplenishmentDUMMY(dtStart, dtEnd);
+      }
+      var deffered = $q.defer();
+      var params = {
+        startTimestamp: dtStart.unix(),
+        finishTimestamp: dtEnd.unix()
+      };
+
+      $http({
+        method: "get",
+        url: baseURL + 'stat/transactions/replenishmentsinfo',
+        params: params
+      }).then(
+        function(stat) {
+          deffered.resolve(stat);
+        },
+        function(reason) {
+          deffered.reject(reason);
+        }
+      );
+
+      return deffered.promise;
+    }
+
+    function getStatReplenishmentDUMMY(dtStart, dtEnd) {
+      var deffered = $q.defer();
+      const data = {
+          total: {
+            'C-PFTT': 10,
+            'C-PR': 1,
+            'TRB': 68
+          },
+          perTerminals: {
+            a9b8c7: {
+              'C-PFTT': 5,
+              'C-PR': 1,
+              'TRB': 68
+            },
+            a9b8d7: {
+              'C-PFTT': 5
+            }
+          }
+      };
+      deffered.resolve(data);
+      return deffered.promise;
+    }
+
+    // Public dashboard stat
+    //********************************************************
+
+
     // Acceptant prices
     function getTariffs() {
       let deffered = $q.defer();
@@ -2323,7 +2379,11 @@ mod.service(
       getDashboardUrl: getDashboardUrl,
 
       getPaymentsBy: getPaymentsBy,
-      isEsek: isEsek
+      isEsek: isEsek,
+
+      // Public dashboard stat
+      getStatReplenishment: getStatReplenishment
+
     });
   }
 );
