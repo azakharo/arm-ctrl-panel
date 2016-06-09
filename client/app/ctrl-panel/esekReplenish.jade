@@ -12,7 +12,7 @@
       i.glyphicon.glyphicon-calendar
   // Statistic Results:
   #esek-replenish-stat-total(ng-show="data && !isObjectEmpty(data) && !isObjectEmpty(data.total)")
-    .page-subtitle.pt1 Итоговая статистика
+    .page-subtitle.pt2 Итоговая статистика
     table.tbl-seawater(st-table='getObjectPropNames(data.total)')
       thead
         tr
@@ -23,7 +23,7 @@
           td {{propName}}
           td {{data.total[propName]}}
   #esek-replenish-stat-detail(ng-show="data && !isObjectEmpty(data) && !isObjectEmpty(data.perTerminals)")
-    #esek-replenish-stat-detail-title.page-subtitle.pt1.pb1 Статистика по терминалам
+    #esek-replenish-stat-detail-title.page-subtitle.pt2.pb1 Статистика по терминалам
     #esek-replenish-stat-detail-table-header.pb1
       .esek-replenish-stat-detail-table-header-cell Терминал
       .esek-replenish-stat-detail-table-header-cell Способ оплаты
