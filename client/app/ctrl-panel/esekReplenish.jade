@@ -11,20 +11,33 @@
     uib-tooltip="Выбрать дату или период", tooltip-append-to-body="true", tooltip-placement="auto bottom")
       i.glyphicon.glyphicon-calendar
   // Statistic Results:
-  #esek-replenish-stat-total
-    #esek-replenish-stat-total-title.page-subtitle.pt1 Итоговая статистика
-    #esek-replenish-stat-total-table(ng-show="data && !isObjectEmpty(data) && !isObjectEmpty(data.total)")
-      table.tbl-seawater(st-table='getObjectPropNames(data.total)')
-        thead
-          tr
-            th Способ оплаты
-            th Кол-во
-        tbody
-          tr(ng-repeat='propName in getObjectPropNames(data.total)')
-            td {{propName}}
-            td {{data.total[propName]}}
-  #esek-replenish-stat-detail
+  #esek-replenish-stat-total(ng-show="data && !isObjectEmpty(data) && !isObjectEmpty(data.total)")
+    .page-subtitle.pt1 Итоговая статистика
+    table.tbl-seawater(st-table='getObjectPropNames(data.total)')
+      thead
+        tr
+          th Способ оплаты
+          th Кол-во
+      tbody
+        tr(ng-repeat='propName in getObjectPropNames(data.total)')
+          td {{propName}}
+          td {{data.total[propName]}}
+  #esek-replenish-stat-detail(ng-show="data && !isObjectEmpty(data) && !isObjectEmpty(data.perTerminals)")
     .page-subtitle.pt1 Статистика по терминалам
-    p Details
+    table.table(st-table='getObjectPropNames(data.perTerminals)')
+      thead
+        tr
+          th Терминал
+          th Способ оплаты
+          th Кол-во
+      tbody(ng-repeat='terminal in getObjectPropNames(data.perTerminals)')
+        tr
+          td {{terminal}}
+          td
+          td
+        tr(ng-repeat='serviceName in getObjectPropNames(data.perTerminals[terminal])')
+          td
+          td {{serviceName}}
+          td {{data.perTerminals[terminal][serviceName]}}
   // NO DATA message
   #esek-replenish-nodata.nodata-msg(ng-show="(!data || isObjectEmpty(data) || isObjectEmpty(data.total)) && !isGettingData") НЕТ ДАННЫХ
