@@ -23,21 +23,21 @@
           td {{propName}}
           td {{data.total[propName]}}
   #esek-replenish-stat-detail(ng-show="data && !isObjectEmpty(data) && !isObjectEmpty(data.perTerminals)")
-    .page-subtitle.pt1 Статистика по терминалам
-    table.table(st-table='getObjectPropNames(data.perTerminals)')
-      thead
-        tr
-          th Терминал
-          th Способ оплаты
-          th Кол-во
-      tbody(ng-repeat='terminal in getObjectPropNames(data.perTerminals)')
-        tr
-          td {{terminal}}
-          td
-          td
-        tr(ng-repeat='serviceName in getObjectPropNames(data.perTerminals[terminal])')
-          td
-          td {{serviceName}}
-          td {{data.perTerminals[terminal][serviceName]}}
+    #esek-replenish-stat-detail-title.page-subtitle.pt1.pb1 Статистика по терминалам
+    #esek-replenish-stat-detail-table-header.pb1
+      .esek-replenish-stat-detail-table-header-cell Терминал
+      .esek-replenish-stat-detail-table-header-cell Способ оплаты
+      .esek-replenish-stat-detail-table-header-cell.text-center Кол-во
+    #esek-replenish-stat-detail-table-body
+      table.table(st-table='getObjectPropNames(data.perTerminals)')
+        tbody(ng-repeat='terminal in getObjectPropNames(data.perTerminals)')
+          tr
+            td {{terminal}}
+            td
+            td
+          tr(ng-repeat='serviceName in getObjectPropNames(data.perTerminals[terminal])')
+            td
+            td {{serviceName}}
+            td {{data.perTerminals[terminal][serviceName]}}
   // NO DATA message
   #esek-replenish-nodata.nodata-msg(ng-show="(!data || isObjectEmpty(data) || isObjectEmpty(data.total)) && !isGettingData") НЕТ ДАННЫХ
