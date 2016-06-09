@@ -27,7 +27,7 @@
     #esek-replenish-stat-detail-table-header.pb1
       .esek-replenish-stat-detail-table-header-cell Терминал
       .esek-replenish-stat-detail-table-header-cell Способ оплаты
-      .esek-replenish-stat-detail-table-header-cell.text-center Кол-во
+      .esek-replenish-stat-detail-table-header-cell Кол-во
     #esek-replenish-stat-detail-table-body
       table.table(st-table='getObjectPropNames(data.perTerminals)')
         tbody(ng-repeat='terminal in getObjectPropNames(data.perTerminals)')
@@ -36,8 +36,8 @@
             td
             td
           tr(ng-repeat='serviceName in getObjectPropNames(data.perTerminals[terminal])')
-            td
-            td {{serviceName}}
-            td {{data.perTerminals[terminal][serviceName]}}
+            td.w30
+            td.w30 {{serviceName}}
+            td.w30 {{data.perTerminals[terminal][serviceName]}}
   // NO DATA message
   #esek-replenish-nodata.nodata-msg(ng-show="(!data || isObjectEmpty(data) || isObjectEmpty(data.total)) && !isGettingData") НЕТ ДАННЫХ
