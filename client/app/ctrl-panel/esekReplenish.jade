@@ -11,7 +11,7 @@
     i.glyphicon.glyphicon-calendar
   // Statistic Results:
   #esek-replenish-stat(ng-show="data && !isObjectEmpty(data) && !isObjectEmpty(data.total)")
-    table(st-table='acceptants')
+    table.tbl-seawater(st-table='getObjectPropNames(data.total)')
       thead
         tr
           th Способ оплаты
