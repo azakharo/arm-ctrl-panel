@@ -24,14 +24,14 @@
           td {{data.total[propName]}}
   #esek-replenish-stat-detail(ng-show="data && !isObjectEmpty(data) && !isObjectEmpty(data.perTerminals)")
     #esek-replenish-stat-detail-title.page-subtitle.pt2.pb1 Статистика по терминалам
-    #esek-replenish-stat-detail-table-header.pb1
-      .esek-replenish-stat-detail-table-header-cell Терминал
+    #esek-replenish-stat-detail-table-header.pt1.pb1.yellow-table-header
+      .esek-replenish-stat-detail-table-header-cell.pl1 Терминал
       .esek-replenish-stat-detail-table-header-cell Способ оплаты
       .esek-replenish-stat-detail-table-header-cell Кол-во
     #esek-replenish-stat-detail-table-body
       table.table(st-table='getObjectPropNames(data.perTerminals)')
         tbody(ng-repeat='terminal in getObjectPropNames(data.perTerminals)')
-          tr
+          tr.esek-replenish-stat-detail-table-term-row
             td {{terminal}}
             td
             td
