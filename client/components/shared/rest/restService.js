@@ -2028,6 +2028,46 @@ mod.service(
       return deffered.promise;
     }
 
+    function getStatPayment(dtStart, dtEnd) {
+      if (isMyDebug) {
+        return getStatPaymentDUMMY(dtStart, dtEnd);
+      }
+      var deffered = $q.defer();
+      var params = {
+        startTimestamp: dtStart.unix(),
+        finishTimestamp: dtEnd.unix()
+      };
+
+      $http({
+        method: "get",
+        url: baseURL + 'stat/transactions/paymentsinfo',
+        params: params
+      }).then(
+        function(stat) {
+          deffered.resolve(stat);
+        },
+        function(reason) {
+          deffered.reject(reason);
+        }
+      );
+
+      return deffered.promise;
+    }
+
+    function getStatPaymentDUMMY(dtStart, dtEnd) {
+      var deffered = $q.defer();
+      const data = {
+        Bus_park_1: {
+          intracity_passenger_traffic: 7
+        },
+        Bus_park_2: {
+          intracity_passenger_traffic: 5
+        }
+      };
+      deffered.resolve(data);
+      return deffered.promise;
+    }
+
     // Public dashboard stat
     //********************************************************
 
@@ -2382,7 +2422,8 @@ mod.service(
       isEsek: isEsek,
 
       // Public dashboard stat
-      getStatReplenishment: getStatReplenishment
+      getStatReplenishment: getStatReplenishment,
+      getStatPayment: getStatPayment
 
     });
   }

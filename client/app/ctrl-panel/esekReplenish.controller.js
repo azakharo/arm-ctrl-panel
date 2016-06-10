@@ -41,7 +41,7 @@ angular.module('armCtrlPanelApp')
 
     function getData() {
       $scope.isGettingData = true;
-      myRest.getStatReplenishment($scope.datePicker.date.startDate, $scope.datePicker.date.endtDate).then(
+      myRest.getStatReplenishment($scope.datePicker.date.startDate, $scope.datePicker.date.endDate).then(
         function (data) {
           $scope.isGettingData = false;
           $scope.data = data;
