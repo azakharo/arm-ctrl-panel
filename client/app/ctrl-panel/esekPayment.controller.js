@@ -58,7 +58,7 @@ angular.module('armCtrlPanelApp')
             });
           });
           $scope.data = data2disp;
-          log($scope.data);
+          //log($scope.data);
         },
         function (reason) {
           $scope.isGettingData = false;
