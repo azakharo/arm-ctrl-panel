@@ -1,0 +1,43 @@
+@animationSteps: 20;
+@animationDuration: 50;
+@animationElement: span;
+@animationElementsCount: 100;
+@delayBetweenLetters: 0.2;
+
+.generate-keyframe(@n, @i: 0) when (@i =< @n) {
+  @selName: @i * (1 / @animationSteps) * 100%;
+  @{selName} {
+    color: hsla(`Math.round(Math.random() * 360)`, 60%, 60%, 1);
+  }
+  .generate-keyframe(@n, (@i + 1));
+}
+
+@keyframes anim-text-flow-keys {
+  .generate-keyframe(@animationSteps);
+}
+
+.anim-text-flow,
+.anim-text-flow-hover:hover {
+  /*
+   * Elements settings
+   */
+  @{animationElement} {
+    animation-name: anim-text-flow-keys;
+    animation-duration: ~'@{animationDuration}s';
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-fill-mode: forwards;
+  }
+
+  @totalDelayTime: @animationElementsCount * @delayBetweenLetters;
+
+  .generate-anim-delay(@n, @i: 1) when (@i =< @n) {
+    @{animationElement}:nth-of-type(@{i}) {
+      @delay: (@i * @delayBetweenLetters) - @totalDelayTime;
+      animation-delay: ~'@{delay}s';
+    }
+    .generate-anim-delay(@n, (@i + 1));
+  }
+
+  .generate-anim-delay(@animationElementsCount);
+}
