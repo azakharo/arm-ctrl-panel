@@ -1994,8 +1994,8 @@ mod.service(
         url: baseURL + 'stat/transactions/replenishmentsinfo',
         params: params
       }).then(
-        function(stat) {
-          deffered.resolve(stat);
+        function(resp) {
+          deffered.resolve(resp.data);
         },
         function(reason) {
           deffered.reject(reason);
@@ -2043,8 +2043,8 @@ mod.service(
         url: baseURL + 'stat/transactions/paymentsinfo',
         params: params
       }).then(
-        function(stat) {
-          deffered.resolve(stat);
+        function(resp) {
+          deffered.resolve(resp.data);
         },
         function(reason) {
           deffered.reject(reason);
