@@ -45,7 +45,7 @@ angular.module('armCtrlPanelApp')
         function (data) {
           $scope.isGettingData = false;
           $scope.data = data;
-          log(data);
+          //log(data);
         },
         function (reason) {
           $scope.isGettingData = false;
@@ -61,23 +61,4 @@ angular.module('armCtrlPanelApp')
       getData();
     });
 
-  }) // controller
-
-  .filter('DatePickerFilter', function () {
-    return function (picker) {
-      const dateFrmt = 'DD.MM.YYYY';
-      let dtStart = picker.startDate;
-      let dtEnd = picker.endDate;
-      if (dtStart.isSame(dtEnd, 'day')) {
-        if (isToday(dtStart)) {
-          return 'сегодня';
-        }
-        else {
-          return dtStart.format(dateFrmt);
-        }
-      }
-      else {
-        return `период ${dtStart.format(dateFrmt)} - ${dtEnd.format(dateFrmt)}`;
-      }
-    };
-  });
+  }); // controller
