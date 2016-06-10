@@ -12,7 +12,17 @@
     uib-tooltip="Выбрать дату или период", tooltip-append-to-body="true", tooltip-placement="auto bottom")
       i.glyphicon.glyphicon-calendar
   // Statistic Results
-  #esek-payment-stat-table(ng-show="data && !isObjectEmpty(data)")
-    p Here will be the table
+  #esek-payment-stat-table(ng-show="data && data.length > 0")
+    table.table.table-striped(st-table="displayedData", st-safe-src="data")
+      thead
+        tr
+          th Поставщик
+          th Услуга
+          th Кол-во
+      tbody
+        tr(ng-repeat='row in displayedData')
+          td {{row.provider}}
+          td {{row.service}}
+          td {{row.amount}}
   // NO DATA message
-  #esek-payment-nodata.nodata-msg(ng-show="(!data || isObjectEmpty(data)) && !isGettingData") НЕТ ДАННЫХ
+  #esek-payment-nodata.nodata-msg(ng-show="(!data || data.length === 0) && !isGettingData") НЕТ ДАННЫХ

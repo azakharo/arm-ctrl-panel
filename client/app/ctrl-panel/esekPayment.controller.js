@@ -3,7 +3,7 @@
 angular.module('armCtrlPanelApp')
   .controller('EsekPaymentCtrl', function ($scope, myRest) {
 
-    $scope.data = {};
+    $scope.data = [];
 
     //=======================================================
     // Date range picker
@@ -44,12 +44,25 @@ angular.module('armCtrlPanelApp')
       myRest.getStatPayment($scope.datePicker.date.startDate, $scope.datePicker.date.endDate).then(
         function (data) {
           $scope.isGettingData = false;
-          $scope.data = data;
-          log(data);
+          let data2disp = [];
+          const providerNames = getObjectPropNames(data);
+          providerNames.forEach(function (provName) {
+            const provServices = data[provName];
+            const serviceNames = getObjectPropNames(provServices);
+            serviceNames.forEach(function (serviceName) {
+              data2disp.push({
+                provider: provName,
+                service: serviceName,
+                amount: provServices[serviceName]
+              });
+            });
+          });
+          $scope.data = data2disp;
+          log($scope.data);
         },
         function (reason) {
           $scope.isGettingData = false;
-          $scope.data = {};
+          $scope.data = [];
         }
       );
     }
