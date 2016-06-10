@@ -2056,14 +2056,13 @@ mod.service(
 
     function getStatPaymentDUMMY(dtStart, dtEnd) {
       var deffered = $q.defer();
-      const data = {
-        Bus_park_1: {
-          intracity_passenger_traffic: 7
-        },
-        Bus_park_2: {
-          intracity_passenger_traffic: 5
-        }
-      };
+      let data = {};
+      _.times(200, function (ind) {
+        const dataItemName = `Bus_park_${ind + 1}`;
+        data[dataItemName] = {
+          intracity_passenger_traffic: ind + 1
+        };
+      });
       deffered.resolve(data);
       return deffered.promise;
     }
