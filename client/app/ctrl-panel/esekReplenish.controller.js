@@ -54,10 +54,12 @@ angular.module('armCtrlPanelApp')
       );
     }
 
+    // Animations
+    $scope.showTimePeriod = false;
     $scope.showContent = false;
     bounceUp('#esek-replenish-title', false);
-    $timeout(() => $scope.showContent = true, 4000);
-
+    $timeout(() => $scope.showTimePeriod = true, 4000);
+    $timeout(() => $scope.showContent = true, 5000);
 
     $scope.isObjectEmpty = isObjectEmpty;
     $scope.getObjectPropNames = getObjectPropNames;

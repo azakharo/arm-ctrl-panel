@@ -5,6 +5,7 @@ var isMyDebug = true;
 angular.module('armCtrlPanelApp', [
   'ngCookies',
   'ngSanitize',
+  'ngAnimate',
   'ui.router',
   'ui.bootstrap',
   'ui.grid',

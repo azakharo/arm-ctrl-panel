@@ -2,16 +2,17 @@
   // Page Title
   #esek-replenish-header
     span#esek-replenish-title.text-xlarge Статистика пополнений баланса с помощью ЕСЭК&nbsp;
-    span.text-large(ng-show="showContent") за&nbsp;
-    // Time period selector
-    strong#esek-replenish-time-period.text-large.mr1(ng-show="showContent") {{ datePicker.date | DatePickerFilter}}
-    button.btn.btn-default.responsive-btn(date-range-picker, ng-model="datePicker.date", ng-show="showContent",
-    options="dateRangePickerOpts", max="today",
-    ng-disabled='isGettingData',
-    uib-tooltip="Выбрать дату или период", tooltip-append-to-body="true", tooltip-placement="auto bottom")
-      i.glyphicon.glyphicon-calendar
+    #esek-replenish-time-period-wrapper.time-period(ng-show="showTimePeriod")
+      span.text-large за&nbsp;
+      // Time period selector
+      strong#esek-replenish-time-period.text-large.mr1 {{ datePicker.date | DatePickerFilter}}
+      button.btn.btn-default.responsive-btn(date-range-picker, ng-model="datePicker.date",
+      options="dateRangePickerOpts", max="today",
+      ng-disabled='isGettingData',
+      uib-tooltip="Выбрать дату или период", tooltip-append-to-body="true", tooltip-placement="auto bottom")
+        i.glyphicon.glyphicon-calendar
   // Statistic Results:
-  #esek-replenish-stat-total(ng-show="showContent && data && !isObjectEmpty(data) && !isObjectEmpty(data.total)")
+  #esek-replenish-stat-total.stat-data(ng-show="showContent && data && !isObjectEmpty(data) && !isObjectEmpty(data.total)")
     .page-subtitle.pt2 Итоговая статистика
     table.tbl-seawater(st-table='getObjectPropNames(data.total)')
       thead
@@ -22,7 +23,7 @@
         tr(ng-repeat='propName in getObjectPropNames(data.total)')
           td {{propName}}
           td {{data.total[propName]}}
-  #esek-replenish-stat-detail(ng-show="showContent && data && !isObjectEmpty(data) && !isObjectEmpty(data.perTerminals)")
+  #esek-replenish-stat-detail.stat-data(ng-show="showContent && data && !isObjectEmpty(data) && !isObjectEmpty(data.perTerminals)")
     #esek-replenish-stat-detail-title.page-subtitle.pt2.pb1 Статистика по терминалам
     #esek-replenish-stat-detail-table-header.pt1.pb1.yellow-table-header
       .esek-replenish-stat-detail-table-header-cell.pl1 Терминал
@@ -40,4 +41,4 @@
             td.w30 {{serviceName}}
             td.w30 {{data.perTerminals[terminal][serviceName]}}
   // NO DATA message
-  #esek-replenish-nodata.nodata-msg(ng-show="showContent && (!data || isObjectEmpty(data) || isObjectEmpty(data.total)) && !isGettingData") НЕТ ДАННЫХ
+  #esek-replenish-nodata.nodata-msg.stat-data(ng-show="showContent && (!data || isObjectEmpty(data) || isObjectEmpty(data.total)) && !isGettingData") НЕТ ДАННЫХ
