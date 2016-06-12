@@ -54,9 +54,9 @@ angular.module('armCtrlPanelApp')
       );
     }
 
-    $scope.onReplayBtnClick = function () {
-      bounceUp('#esek-replenish-time-period');
-    };
+    setTimeout(function () {
+      bounceUp('#esek-replenish-title', false);
+    }, 100);
 
     $scope.isObjectEmpty = isObjectEmpty;
     $scope.getObjectPropNames = getObjectPropNames;

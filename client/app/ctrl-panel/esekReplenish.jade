@@ -1,7 +1,7 @@
 #esek-replenish-page-content.p1
   // Page Title
   #esek-replenish-header
-    span.text-xlarge Статистика пополнений баланса с помощью ЕСЭК&nbsp;
+    span#esek-replenish-title.text-xlarge Статистика пополнений баланса с помощью ЕСЭК&nbsp;
     span.text-large за&nbsp;
     // Time period selector
     strong#esek-replenish-time-period.text-large.mr1 {{ datePicker.date | DatePickerFilter}}
@@ -10,8 +10,6 @@
     ng-disabled='isGettingData',
     uib-tooltip="Выбрать дату или период", tooltip-append-to-body="true", tooltip-placement="auto bottom")
       i.glyphicon.glyphicon-calendar
-    // replay anim button
-    button.btn.btn-success(ng-click="onReplayBtnClick()") Animate
   // Statistic Results:
   #esek-replenish-stat-total(ng-show="data && !isObjectEmpty(data) && !isObjectEmpty(data.total)")
     .page-subtitle.pt2 Итоговая статистика

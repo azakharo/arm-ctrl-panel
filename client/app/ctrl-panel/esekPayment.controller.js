@@ -68,7 +68,7 @@ angular.module('armCtrlPanelApp')
     }
 
     setTimeout(function () {
-      bounceUp('#esek-payment-time-period');
+      bounceUp('#esek-payment-title', false);
     }, 100);
 
     $scope.isObjectEmpty = isObjectEmpty;
