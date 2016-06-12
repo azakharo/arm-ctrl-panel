@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('armCtrlPanelApp')
-  .controller('EsekReplenishCtrl', function ($scope, myRest) {
+  .controller('EsekReplenishCtrl', function ($scope, $timeout, myRest) {
 
     $scope.data = {};
 
@@ -54,9 +54,10 @@ angular.module('armCtrlPanelApp')
       );
     }
 
-    setTimeout(function () {
-      bounceUp('#esek-replenish-title', false);
-    }, 100);
+    $scope.showContent = false;
+    bounceUp('#esek-replenish-title', false);
+    $timeout(() => $scope.showContent = true, 4000);
+
 
     $scope.isObjectEmpty = isObjectEmpty;
     $scope.getObjectPropNames = getObjectPropNames;
