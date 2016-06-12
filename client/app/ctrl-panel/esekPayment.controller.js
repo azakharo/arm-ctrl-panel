@@ -67,7 +67,7 @@ angular.module('armCtrlPanelApp')
       );
     }
 
-    bounceUp();
+    bounceUp(false);
 
     $scope.isObjectEmpty = isObjectEmpty;
     $scope.getObjectPropNames = getObjectPropNames;

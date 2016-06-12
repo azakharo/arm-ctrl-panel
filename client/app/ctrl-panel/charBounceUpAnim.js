@@ -30,7 +30,8 @@ function bounceUp_prepareText() {
 }
 
 // Go through a sentence and trigger activate state
-function bounceUp() {
+// doRestoreHtml - you may have noticed some shift after the restore. So, you can omit it.
+function bounceUp(doRestoreHtml = true) {
   let sentenceCounter = 0;
   const sentenceDelay = 600;
   const spanDelay = 75;
@@ -61,15 +62,17 @@ function bounceUp() {
     sentenceCounter++;
   });
 
-  // Calc delay to restore html
-  var restoreAfter = 0;
-  $('.bounce-up').each(function() {
-    var $sentence = $(this);
-    var $spans = $sentence.find('span');
-    var spanNum = $spans.length;
-    restoreAfter += spanNum * spanDelay + sentenceDelay;
-  });
-  bounceUp_restoreHtml(restoreAfter, origHtml);
+  if (doRestoreHtml) {
+    // Calc delay to restore html
+    var restoreAfter = 0;
+    $('.bounce-up').each(function() {
+      var $sentence = $(this);
+      var $spans = $sentence.find('span');
+      var spanNum = $spans.length;
+      restoreAfter += spanNum * spanDelay + sentenceDelay;
+    });
+    bounceUp_restoreHtml(restoreAfter, origHtml);
+  }
 }
 
 function bounceUp_restoreHtml(restoreAfter, origHtml) {
