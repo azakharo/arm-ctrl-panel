@@ -54,8 +54,9 @@ angular.module('armCtrlPanelApp')
       );
     }
 
-    bounceUp_prepareText();
-    bounceUp_triggerAnimation();
+    $scope.onReplayBtnClick = function () {
+      bounceUp();
+    };
 
     $scope.isObjectEmpty = isObjectEmpty;
     $scope.getObjectPropNames = getObjectPropNames;

@@ -10,6 +10,8 @@
     ng-disabled='isGettingData',
     uib-tooltip="Выбрать дату или период", tooltip-append-to-body="true", tooltip-placement="auto bottom")
       i.glyphicon.glyphicon-calendar
+    // replay anim button
+    button.btn.btn-success(ng-click="onReplayBtnClick()") Animate
   // Statistic Results:
   #esek-replenish-stat-total(ng-show="data && !isObjectEmpty(data) && !isObjectEmpty(data.total)")
     .page-subtitle.pt2 Итоговая статистика

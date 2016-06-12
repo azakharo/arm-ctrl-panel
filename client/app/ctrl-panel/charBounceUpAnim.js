@@ -1,8 +1,11 @@
 "use strict";
 
+let origHtml = null;
+
 // Go through a sentence, wrap its characters with spans
 function bounceUp_prepareText() {
   var $sentences = $('.bounce-up');
+  origHtml = $sentences.html();
 
   // Run for each sentence
   $sentences.each(function() {
@@ -27,9 +30,12 @@ function bounceUp_prepareText() {
 }
 
 // Go through a sentence and trigger activate state
-function bounceUp_triggerAnimation() {
-  var sentenceCounter = 0;
-  var sentenceDelay = 600;
+function bounceUp() {
+  let sentenceCounter = 0;
+  const sentenceDelay = 600;
+  const spanDelay = 75;
+
+  bounceUp_prepareText();
 
   $('.bounce-up').each(function() {
     var $sentence = $(this);
@@ -38,7 +44,6 @@ function bounceUp_triggerAnimation() {
     setTimeout(function() {
       var $spans = $sentence.find('span');
       var spanCounter = 0;
-      var spanDelay = 75;
 
       // Loop through all spans and activate
       $spans.each(function() {
@@ -55,4 +60,21 @@ function bounceUp_triggerAnimation() {
 
     sentenceCounter++;
   });
+
+  // Calc delay to restore html
+  var restoreAfter = 0;
+  $('.bounce-up').each(function() {
+    var $sentence = $(this);
+    var $spans = $sentence.find('span');
+    var spanNum = $spans.length;
+    restoreAfter += spanNum * spanDelay + sentenceDelay;
+  });
+  bounceUp_restoreHtml(restoreAfter, origHtml);
+}
+
+function bounceUp_restoreHtml(restoreAfter, origHtml) {
+  setTimeout(function () {
+    let $sentences = $('.bounce-up');
+    $sentences.html(origHtml);
+  }, restoreAfter);
 }
