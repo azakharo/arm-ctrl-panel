@@ -1,10 +1,11 @@
 "use strict";
 
 let origHtml = null;
+const bounceUpClass = 'bounce-up';
 
 // Go through a sentence, wrap its characters with spans
-function bounceUp_prepareText() {
-  var $sentences = $('.bounce-up');
+function bounceUp_prepareText(selector2animate) {
+  var $sentences = $(selector2animate);
   origHtml = $sentences.html();
 
   // Run for each sentence
@@ -31,14 +32,16 @@ function bounceUp_prepareText() {
 
 // Go through a sentence and trigger activate state
 // doRestoreHtml - you may have noticed some shift after the restore. So, you can omit it.
-function bounceUp(doRestoreHtml = true) {
+function bounceUp(selector2animate, doRestoreHtml = true) {
   let sentenceCounter = 0;
   const sentenceDelay = 600;
   const spanDelay = 75;
 
-  bounceUp_prepareText();
+  $(selector2animate).addClass(bounceUpClass);
 
-  $('.bounce-up').each(function() {
+  bounceUp_prepareText(selector2animate);
+
+  $(selector2animate).each(function() {
     var $sentence = $(this);
 
     // Trigger for each sentence
@@ -62,22 +65,28 @@ function bounceUp(doRestoreHtml = true) {
     sentenceCounter++;
   });
 
+  // Calc the anim time
+  var animTime = 0;
+  $(selector2animate).each(function() {
+    var $sentence = $(this);
+    var $spans = $sentence.find('span');
+    var spanNum = $spans.length;
+    animTime += spanNum * spanDelay + sentenceDelay;
+  });
+
   if (doRestoreHtml) {
-    // Calc delay to restore html
-    var restoreAfter = 0;
-    $('.bounce-up').each(function() {
-      var $sentence = $(this);
-      var $spans = $sentence.find('span');
-      var spanNum = $spans.length;
-      restoreAfter += spanNum * spanDelay + sentenceDelay;
-    });
-    bounceUp_restoreHtml(restoreAfter, origHtml);
+    bounceUp_restoreHtml(selector2animate, animTime, origHtml);
   }
+
+  setTimeout(function() {
+    $(selector2animate).removeClass(bounceUpClass);
+  }, animTime);
+
 }
 
-function bounceUp_restoreHtml(restoreAfter, origHtml) {
+function bounceUp_restoreHtml(selector2animate, restoreAfter, origHtml) {
   setTimeout(function () {
-    let $sentences = $('.bounce-up');
+    let $sentences = $(selector2animate);
     $sentences.html(origHtml);
   }, restoreAfter);
 }

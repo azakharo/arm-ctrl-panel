@@ -67,7 +67,9 @@ angular.module('armCtrlPanelApp')
       );
     }
 
-    bounceUp(false);
+    setTimeout(function () {
+      bounceUp('#esek-payment-time-period');
+    }, 100);
 
     $scope.isObjectEmpty = isObjectEmpty;
     $scope.getObjectPropNames = getObjectPropNames;

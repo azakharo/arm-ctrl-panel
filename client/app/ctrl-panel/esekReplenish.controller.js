@@ -55,7 +55,7 @@ angular.module('armCtrlPanelApp')
     }
 
     $scope.onReplayBtnClick = function () {
-      bounceUp();
+      bounceUp('#esek-replenish-time-period');
     };
 
     $scope.isObjectEmpty = isObjectEmpty;
