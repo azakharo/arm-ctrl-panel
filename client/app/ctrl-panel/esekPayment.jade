@@ -3,16 +3,17 @@
   #esek-payment-header
     // Title
     span#esek-payment-title.text-xlarge Статистика оплаты услуг с помощью ЕСЭК&nbsp;
-    span.text-large за&nbsp;
-    // Time period selector
-    strong#esek-payment-time-period.text-large.mr1 {{ datePicker.date | DatePickerFilter}}
-    button.btn.btn-default.responsive-btn(date-range-picker, ng-model="datePicker.date",
-    options="dateRangePickerOpts", max="today",
-    ng-disabled='isGettingData',
-    uib-tooltip="Выбрать дату или период", tooltip-append-to-body="true", tooltip-placement="auto bottom")
-      i.glyphicon.glyphicon-calendar
+    #esek-replenish-time-period-wrapper.time-period(ng-show="showTimePeriod")
+      span.text-large за&nbsp;
+      // Time period selector
+      strong#esek-payment-time-period.text-large.mr1 {{ datePicker.date | DatePickerFilter}}
+      button.btn.btn-default.responsive-btn(date-range-picker, ng-model="datePicker.date",
+      options="dateRangePickerOpts", max="today",
+      ng-disabled='isGettingData',
+      uib-tooltip="Выбрать дату или период", tooltip-append-to-body="true", tooltip-placement="auto bottom")
+        i.glyphicon.glyphicon-calendar
   // Statistic Results
-  #esek-payment-stat-table.pt1(ng-show="data && data.length > 0")
+  #esek-payment-stat-table.stat-data.pt1(ng-show="showContent && data && data.length > 0")
     table.table.table-striped(st-table="displayedData", st-safe-src="data")
       thead.yellow-table-header
         tr
@@ -25,4 +26,4 @@
           td {{row.service}}
           td {{row.amount}}
   // NO DATA message
-  #esek-payment-nodata.nodata-msg(ng-show="(!data || data.length === 0) && !isGettingData") НЕТ ДАННЫХ
+  #esek-payment-nodata.stat-data.nodata-msg(ng-show="showContent && (!data || data.length === 0) && !isGettingData") НЕТ ДАННЫХ
