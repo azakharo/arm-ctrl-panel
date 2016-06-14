@@ -1,6 +1,6 @@
 #esek-payment-page-content.p1
   // Page title and time period selector
-  #esek-payment-header
+  #esek-payment-header.pb1
     // Title
     span#esek-payment-title.text-xlarge Статистика оплаты услуг с помощью ЕСЭК&nbsp;
     #esek-replenish-time-period-wrapper.time-period(ng-show="showTimePeriod")
@@ -13,8 +13,8 @@
       uib-tooltip="Выбрать дату или период", tooltip-append-to-body="true", tooltip-placement="auto bottom")
         i.glyphicon.glyphicon-calendar
   // Statistic Results
-  #esek-payment-stat-table.stat-data.pt1(ng-show="showContent && data && data.length > 0")
-    table.table.table-striped(st-table="displayedData", st-safe-src="data")
+  #esek-payment-stat-table.stat-data(ng-show="showContent && data && data.length > 0")
+    table.table.table-striped.tbl-hdr-fixed(st-table="displayedData", st-safe-src="data")
       thead.yellow-table-header
         tr
           th Поставщик

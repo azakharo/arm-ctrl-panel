@@ -72,8 +72,18 @@ angular.module('armCtrlPanelApp')
     $scope.showContent = false;
     bounceUp('#esek-payment-title', false);
     $timeout(() => $scope.showTimePeriod = true, 3500);
-    $timeout(() => $scope.showContent = true, 4500);
+    $timeout(function () {
+      $scope.showContent = true;
+      fixTableHeader();
+    }, 4500);
 
+    $(window).resize(function () {
+      fixTableHeader();
+    });
+
+    function fixTableHeader() {
+      $('.tbl-hdr-fixed').stickyTableHeaders({scrollableArea: $('#esek-payment-stat-table')});
+    }
 
     $scope.isObjectEmpty = isObjectEmpty;
     $scope.getObjectPropNames = getObjectPropNames;
