@@ -24,7 +24,7 @@
     "angularjs-dropdown-multiselect": "^1.5.2",
     "angular-local-storage": "^0.2.5",
     "angular-smart-table": "^2.1.8",
-    "animate.css": "^3.5.2",
+    "animate-css": "^3.5.2",
     "angular-animate": "1.4.8",
     "StickyTableHeaders": "^0.1.19"
   },
