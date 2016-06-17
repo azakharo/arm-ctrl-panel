@@ -12,15 +12,16 @@
       i.glyphicon.glyphicon-calendar
   // Statistic Results:
   #esek-activat-stat-table(ng-show="data && !isObjectEmpty(data)")
-    p Here will be a table
-    //table(st-table='getObjectPropNames(data.total)')
-    //  thead
-    //    tr
-    //      th Способ оплаты
-    //      th Кол-во
-    //  tbody
-    //    tr(ng-repeat='propName in getObjectPropNames(data.total)')
-    //      td {{propName}}
-    //      td {{data.total[propName]}}
+    table(st-table='data')
+      tbody
+        tr
+          td Всего активировано карт:
+          td {{data.total}}
+        tr
+          td Льготных:
+          td {{data.exempted}}
+        tr
+          td Нельготных:
+          td {{data.nonexempted}}
   // NO DATA message
   #esek-activat-nodata.nodata-msg(ng-show="(!data || isObjectEmpty(data)) && !isGettingData") НЕТ ДАННЫХ

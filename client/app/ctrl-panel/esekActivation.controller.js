@@ -40,7 +40,7 @@ angular.module('armCtrlPanelApp')
 
     function getData() {
       $scope.isGettingData = true;
-      myRest.getStatReplenishment($scope.datePicker.date.startDate, $scope.datePicker.date.endDate).then(
+      myRest.getStatEsekActivat($scope.datePicker.date.startDate, $scope.datePicker.date.endDate).then(
         function (data) {
           $scope.isGettingData = false;
           $scope.data = data;
@@ -52,5 +52,10 @@ angular.module('armCtrlPanelApp')
         }
       );
     }
+
+    // Reaction on date range change
+    $scope.$watch('datePicker.date', function () {
+      getData();
+    });
 
   });
