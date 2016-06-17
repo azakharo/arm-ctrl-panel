@@ -1,2 +1,26 @@
 #esek-activation-page-content.p1
-  p Статистика активаций ЕСЭК
+  // Page Title
+  #esek-activat-header
+    span.text-xlarge Статистика активаций ЕСЭК&nbsp;
+    span.text-large за&nbsp;
+    // Time period selector
+    strong.text-large.mr1 {{ datePicker.date | DatePickerFilter}}
+    button.btn.btn-default.responsive-btn(date-range-picker, ng-model="datePicker.date",
+    options="dateRangePickerOpts", max="today",
+    ng-disabled='isGettingData',
+    uib-tooltip="Выбрать дату или период", tooltip-append-to-body="true", tooltip-placement="auto bottom")
+      i.glyphicon.glyphicon-calendar
+  // Statistic Results:
+  #esek-activat-stat-table(ng-show="data && !isObjectEmpty(data)")
+    p Here will be a table
+    //table(st-table='getObjectPropNames(data.total)')
+    //  thead
+    //    tr
+    //      th Способ оплаты
+    //      th Кол-во
+    //  tbody
+    //    tr(ng-repeat='propName in getObjectPropNames(data.total)')
+    //      td {{propName}}
+    //      td {{data.total[propName]}}
+  // NO DATA message
+  #esek-activat-nodata.nodata-msg(ng-show="(!data || isObjectEmpty(data)) && !isGettingData") НЕТ ДАННЫХ
