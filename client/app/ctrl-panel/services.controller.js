@@ -1,11 +1,10 @@
 'use strict';
 
 angular.module('armCtrlPanelApp')
-  .controller('ServicesCtrl', function ($scope, uiGridConstants, myRest) {
+  .controller('ServicesCtrl', function ($scope, $rootScope, uiGridConstants, myRest) {
     /////////////////////////////////////////////////////////
     // Initialization
 
-    $scope.isGettingData = true;
     $scope.apps = [];
     $scope.appSelected = null;
     $scope.tariffs = [];
@@ -25,15 +24,15 @@ angular.module('armCtrlPanelApp')
     };
 
     function updateTariffs() {
-      $scope.isGettingData = true;
+      $rootScope.isGettingData = true;
       myRest.getAppTariffs($scope.appSelected).then(
         function (tars) {
           $scope.gridOptions.data = tars;
           setGrouping();
-          $scope.isGettingData = false;
+          $rootScope.isGettingData = false;
         },
         function (reason) {
-          $scope.isGettingData = false;
+          $rootScope.isGettingData = false;
         }
       );
     }

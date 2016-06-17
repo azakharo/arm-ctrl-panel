@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('armCtrlPanelApp')
-  .controller('AcceptantsCtrl', function ($scope, myRest) {
+  .controller('AcceptantsCtrl', function ($scope, $rootScope, myRest) {
     /////////////////////////////////////////////////////////
     // Initialization
 
@@ -12,16 +12,16 @@ angular.module('armCtrlPanelApp')
     /////////////////////////////////////////////////////////
 
     function updateAcceptants() {
-      $scope.isGettingData = true;
+      $rootScope.isGettingData = true;
       myRest.getAllProviders().then(
         function (providers) {
           $scope.acceptants = _.filter(providers, function (prov) {
             return prov.meta && prov.meta.roles && _.includes(prov.meta.roles, "acceptant");
           });
-          $scope.isGettingData = false;
+          $rootScope.isGettingData = false;
         },
         function (reason) {
-          $scope.isGettingData = false;
+          $rootScope.isGettingData = false;
         }
       );
     }

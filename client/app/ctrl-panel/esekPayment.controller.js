@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('armCtrlPanelApp')
-  .controller('EsekPaymentCtrl', function ($scope, $timeout, myRest) {
+  .controller('EsekPaymentCtrl', function ($scope, $rootScope, $timeout, myRest) {
 
     $scope.data = [];
 
@@ -40,10 +40,10 @@ angular.module('armCtrlPanelApp')
 
 
     function getData() {
-      $scope.isGettingData = true;
+      $rootScope.isGettingData = true;
       myRest.getStatPayment($scope.datePicker.date.startDate, $scope.datePicker.date.endDate).then(
         function (data) {
-          $scope.isGettingData = false;
+          $rootScope.isGettingData = false;
           let data2disp = [];
           const providerNames = getObjectPropNames(data);
           providerNames.forEach(function (provName) {
@@ -61,7 +61,7 @@ angular.module('armCtrlPanelApp')
           //log($scope.data);
         },
         function (reason) {
-          $scope.isGettingData = false;
+          $rootScope.isGettingData = false;
           $scope.data = [];
         }
       );

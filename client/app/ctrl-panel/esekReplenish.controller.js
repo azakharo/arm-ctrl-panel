@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('armCtrlPanelApp')
-  .controller('EsekReplenishCtrl', function ($scope, $timeout, myRest) {
+  .controller('EsekReplenishCtrl', function ($scope, $rootScope, $timeout, myRest) {
 
     $scope.data = {};
 
@@ -40,15 +40,15 @@ angular.module('armCtrlPanelApp')
 
 
     function getData() {
-      $scope.isGettingData = true;
+      $rootScope.isGettingData = true;
       myRest.getStatReplenishment($scope.datePicker.date.startDate, $scope.datePicker.date.endDate).then(
         function (data) {
-          $scope.isGettingData = false;
+          $rootScope.isGettingData = false;
           $scope.data = data;
           //log(data);
         },
         function (reason) {
-          $scope.isGettingData = false;
+          $rootScope.isGettingData = false;
           $scope.data = {};
         }
       );
