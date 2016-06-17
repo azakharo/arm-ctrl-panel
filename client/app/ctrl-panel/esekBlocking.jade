@@ -1,2 +1,27 @@
-#esek-blocking-page-content.p1
-  p Статистика блокировок ЕСЭК
+#esek-block-page-content.p1
+  // Page Title
+  #esek-block-header
+    span.text-xlarge Статистика блокировок ЕСЭК&nbsp;
+    span.text-large за&nbsp;
+    // Time period selector
+    strong.text-large.mr1 {{ datePicker.date | DatePickerFilter}}
+    button.btn.btn-default.responsive-btn(date-range-picker, ng-model="datePicker.date",
+    options="dateRangePickerOpts", max="today",
+    ng-disabled='isGettingData',
+    uib-tooltip="Выбрать дату или период", tooltip-append-to-body="true", tooltip-placement="auto bottom")
+      i.glyphicon.glyphicon-calendar
+  // Statistic Results:
+  #esek-block-stat-table(ng-show="data && !isObjectEmpty(data)")
+    table.tbl-seawater.tbl-seawater-red.w50(st-table='data')
+      tbody
+        tr
+          td Всего заблокировано карт:
+          td {{data.total}}
+        tr
+          td Льготных:
+          td {{data.exempted}}
+        tr
+          td Нельготных:
+          td {{data.nonexempted}}
+  // NO DATA message
+  #esek-block-nodata.nodata-msg(ng-show="(!data || isObjectEmpty(data)) && !isGettingData") НЕТ ДАННЫХ

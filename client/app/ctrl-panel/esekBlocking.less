@@ -1,4 +1,26 @@
-#esek-blocking-page-content {
+#esek-block-page-content {
   flex: 1;
-  background: violet;
+}
+
+#esek-block-header, #esek-block-table, #esek-block-nodata {
+  flex: none;
+}
+
+.tbl-seawater-red {
+  color: darkred !important;
+  border: 1px solid darkred !important;
+
+  border-collapse: collapse !important;
+  border-spacing: 0px !important;
+}
+
+@seawater-red-cell-border: 1px solid hotpink;
+
+tr {
+  border: @seawater-red-cell-border !important;
+  background-color: lightpink !important;
+}
+
+td {
+  border: @seawater-red-cell-border !important;
 }

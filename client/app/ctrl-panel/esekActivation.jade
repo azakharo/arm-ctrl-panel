@@ -1,4 +1,4 @@
-#esek-activation-page-content.p1
+#esek-activat-page-content.p1
   // Page Title
   #esek-activat-header
     span.text-xlarge Статистика активаций ЕСЭК&nbsp;
@@ -11,7 +11,7 @@
     uib-tooltip="Выбрать дату или период", tooltip-append-to-body="true", tooltip-placement="auto bottom")
       i.glyphicon.glyphicon-calendar
   // Statistic Results:
-  #esek-activat-stat-table(ng-show="data && !isObjectEmpty(data)")
+  #esek-activat-table(ng-show="data && !isObjectEmpty(data)")
     table.tbl-seawater.w50(st-table='data')
       tbody
         tr
