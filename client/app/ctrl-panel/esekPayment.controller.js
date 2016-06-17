@@ -85,9 +85,6 @@ angular.module('armCtrlPanelApp')
       $('.tbl-hdr-fixed').stickyTableHeaders({scrollableArea: $('#esek-payment-stat-table')});
     }
 
-    $scope.isObjectEmpty = isObjectEmpty;
-    $scope.getObjectPropNames = getObjectPropNames;
-
     $scope.$watch('datePicker.date', function () {
       getData();
     });

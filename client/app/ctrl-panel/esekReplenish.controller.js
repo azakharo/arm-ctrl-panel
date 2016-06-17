@@ -61,9 +61,6 @@ angular.module('armCtrlPanelApp')
     $timeout(() => $scope.showTimePeriod = true, 3500);
     $timeout(() => $scope.showContent = true, 4500);
 
-    $scope.isObjectEmpty = isObjectEmpty;
-    $scope.getObjectPropNames = getObjectPropNames;
-
     $scope.$watch('datePicker.date', function () {
       getData();
     });

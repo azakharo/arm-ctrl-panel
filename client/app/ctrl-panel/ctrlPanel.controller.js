@@ -5,6 +5,9 @@ angular.module('armCtrlPanelApp')
     $scope.Auth = Auth;
     $rootScope.isGettingData = false;
 
+    $scope.isObjectEmpty = isObjectEmpty;
+    $scope.getObjectPropNames = getObjectPropNames;
+
     $('.anim-text-flow').html(function(i, html) {
       var chars = $.trim(html).split("");
 
