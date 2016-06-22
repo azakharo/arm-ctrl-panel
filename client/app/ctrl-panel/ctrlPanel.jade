@@ -1,51 +1,48 @@
-snap-drawer#sidebar
-  #sidebar-title.pt1 Меню:
-  ul.nav.nav-pills.nav-stacked
-    li.sidebar-menu-item(role='presentation', ng-repeat="mi in menuItems",
-    ng-class="{ 'active': isCurrentState(mi.state) }")
-      a(ng-click="onMenuItemClick(mi.state)", snap-close)
-        i.fa.fa-lg(ng-class="mi.icon")
-        span.ml1 {{ mi.title }}
-    li.sidebar-menu-item(role='presentation', ng-repeat="mi in esekMenuSubItems",
-    ng-class="{ 'active': isCurrentState(mi.state) }")
-      a(ng-click="onMenuItemClick(mi.state)", snap-close)
-        span.ml2 &nbsp;
-        i.fa.fa-lg(ng-class="mi.icon")
-        span.ml1 {{ mi.title }}
-snap-content(snap-opt-disable="'right'")
-  #wrapper.w100.vh100
-    span(us-spinner="{radius:30, width:8, length: 16}", spinner-on="isGettingData")
-    // HEADER
-    #header
-      #header-text
-        button.btn.btn-default.responsive-btn.mr1(snap-toggle="left",
-        uib-tooltip="Меню", tooltip-append-to-body="false", tooltip-placement="auto bottom")
-         i.fa.fa-bars
-        span.text-large Контрольная панель оператора
-      // Navi menu
-      #navi-menu
-        .btn-group(uib-dropdown='')
-          button#navi-menu-button.btn.btn-primary.responsive-btn(type='button', uib-dropdown-toggle='')
-            span Перейти к&nbsp;&nbsp;
-            span.caret
-          ul(uib-dropdown-menu='', role='menu', aria-labelledby='navi-menu-button')
-            li(role='menuitem', ng-repeat="menuItem in naviMenuItems")
-              a(ng-href='{{menuItem.url}}') {{menuItem.name}}
-      #user-section(ng-show="Auth.getCurrentUser() !== undefined")
-        span(style="margin-right: 10px") Оператор: {{ Auth.getCurrentUser() }}
-        button.btn.btn-default.responsive-btn(ng-click="onSettingsBtnClick()", disabled="disabled",
-        style="margin-right: 5px")
-          i.fa.fa-cog
-        button.btn.btn-default.responsive-btn(ng-click="onLogOutBtnClick()", style="margin-right: 5px",
-        uib-tooltip="Выйти", tooltip-append-to-body="true", tooltip-placement="auto bottom")
-          i.fa.fa-sign-out
-    // CONTENT
-    #content.ui-view
-    // FOOTER
-    footer#footer.text-center Copyright &copy; 2015-2016 &mdash;&nbsp;
-      a(href="http://sarov-itc.ru/" target="_blank") ИТЦ "Система-Саров"
-      span ,&nbsp;&nbsp;
-      a(href="https://www.me-so.ru/" target="_blank") ДЦ "Микрон"
-    #alert-section.msg-in-center(ng-show='alerts.length > 0')
-      uib-alert.alert-fading-out(ng-repeat="alert in alerts", type="{{alert.type}}", close="alert.close()")
-        span(ng-bind="alert.msg")
+#wrapper.w100.vh100
+  span(us-spinner="{radius:30, width:8, length: 16}", spinner-on="isGettingData")
+  // HEADER
+  #header
+    #header-text
+      span.text-large Контрольная панель оператора
+    // Navi menu
+    #navi-menu
+      .btn-group(uib-dropdown='')
+        button#navi-menu-button.btn.btn-primary.responsive-btn(type='button', uib-dropdown-toggle='')
+          span Перейти к&nbsp;&nbsp;
+          span.caret
+        ul(uib-dropdown-menu='', role='menu', aria-labelledby='navi-menu-button')
+          li(role='menuitem', ng-repeat="menuItem in naviMenuItems")
+            a(ng-href='{{menuItem.url}}') {{menuItem.name}}
+    #user-section(ng-show="Auth.getCurrentUser() !== undefined")
+      span(style="margin-right: 10px") Оператор: {{ Auth.getCurrentUser() }}
+      button.btn.btn-default.responsive-btn(ng-click="onSettingsBtnClick()", disabled="disabled",
+      style="margin-right: 5px")
+        i.fa.fa-cog
+      button.btn.btn-default.responsive-btn(ng-click="onLogOutBtnClick()", style="margin-right: 5px",
+      uib-tooltip="Выйти", tooltip-append-to-body="true", tooltip-placement="auto bottom")
+        i.fa.fa-sign-out
+  // CONTENT
+  #content
+    #sidebar
+      //#sidebar-title.pt1 Меню:
+      ul.nav.nav-pills.nav-stacked.p1
+        li.sidebar-menu-item(role='presentation', ng-repeat="mi in menuItems",
+        ng-class="{ 'active': isCurrentState(mi.state) }")
+          a(ng-click="onMenuItemClick(mi.state)", snap-close)
+            i.fa.fa-lg(ng-class="mi.icon")
+            span.ml1 {{ mi.title }}
+        li.sidebar-menu-item(role='presentation', ng-repeat="mi in esekMenuSubItems",
+        ng-class="{ 'active': isCurrentState(mi.state) }")
+          a(ng-click="onMenuItemClick(mi.state)", snap-close)
+            span.ml2 &nbsp;
+            i.fa.fa-lg(ng-class="mi.icon")
+            span.ml1 {{ mi.title }}
+    #main-area.ui-view
+  // FOOTER
+  footer#footer.text-center Copyright &copy; 2015-2016 &mdash;&nbsp;
+    a(href="http://sarov-itc.ru/" target="_blank") ИТЦ "Система-Саров"
+    span ,&nbsp;&nbsp;
+    a(href="https://www.me-so.ru/" target="_blank") ДЦ "Микрон"
+  #alert-section.msg-in-center(ng-show='alerts.length > 0')
+    uib-alert.alert-fading-out(ng-repeat="alert in alerts", type="{{alert.type}}", close="alert.close()")
+      span(ng-bind="alert.msg")

@@ -17,7 +17,6 @@
     "angular-i18n": "1.4.8",
     "angular-ui-grid": "~3.1.0",
     "angular-promise-extras": "~0.1.5",
-    "angular-snap": "^1.8.5",
     "angular-spinner": "^0.8.1",
     "moment-range": "^2.1.0",
     "angular-daterangepicker": "^0.2.2",

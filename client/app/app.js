@@ -17,7 +17,6 @@ angular.module('armCtrlPanelApp', [
   'ui.grid.saveState',
   'smart-table',
   'ngPromiseExtras',
-  'snap',
   'angularSpinner',
   'daterangepicker',
   'angularjs-dropdown-multiselect',
