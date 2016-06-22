@@ -55,11 +55,14 @@ angular.module('armCtrlPanelApp')
     }
 
     // Animations
-    $scope.showTimePeriod = false;
-    $scope.showContent = false;
-    bounceUp('#esek-replenish-title', false);
-    $timeout(() => $scope.showTimePeriod = true, 3500);
-    $timeout(() => $scope.showContent = true, 4500);
+    //$scope.showTimePeriod = false;
+    //$scope.showContent = false;
+    //bounceUp('#esek-replenish-title', false);
+    //$timeout(() => $scope.showTimePeriod = true, 3500);
+    //$timeout(() => $scope.showContent = true, 4500);
+    $scope.showTimePeriod = true;
+    $scope.showContent = true;
+
 
     $scope.$watch('datePicker.date', function () {
       getData();

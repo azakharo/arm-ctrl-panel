@@ -58,6 +58,7 @@ angular.module('armCtrlPanelApp')
             });
           });
           $scope.data = data2disp;
+          fixTableHeader();
           //log($scope.data);
         },
         function (reason) {
@@ -68,14 +69,16 @@ angular.module('armCtrlPanelApp')
     }
 
     // Animations
-    $scope.showTimePeriod = false;
-    $scope.showContent = false;
-    bounceUp('#esek-payment-title', false);
-    $timeout(() => $scope.showTimePeriod = true, 3500);
-    $timeout(function () {
-      $scope.showContent = true;
-      fixTableHeader();
-    }, 4500);
+    //$scope.showTimePeriod = false;
+    //$scope.showContent = false;
+    //bounceUp('#esek-payment-title', false);
+    //$timeout(() => $scope.showTimePeriod = true, 3500);
+    //$timeout(function () {
+    //  $scope.showContent = true;
+    //  fixTableHeader();
+    //}, 4500);
+    $scope.showTimePeriod = true;
+    $scope.showContent = true;
 
     $(window).resize(function () {
       fixTableHeader();
