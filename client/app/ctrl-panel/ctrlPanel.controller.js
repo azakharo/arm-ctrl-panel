@@ -8,11 +8,11 @@ angular.module('armCtrlPanelApp')
     $scope.isObjectEmpty = isObjectEmpty;
     $scope.getObjectPropNames = getObjectPropNames;
 
-    $('.anim-text-flow').html(function(i, html) {
-      var chars = $.trim(html).split("");
-
-      return '<span>' + chars.join('</span><span>') + '</span>';
-    });
+    //$('.anim-text-flow').html(function(i, html) {
+    //  var chars = $.trim(html).split("");
+    //
+    //  return '<span>' + chars.join('</span><span>') + '</span>';
+    //});
 
     $scope.onSettingsBtnClick = function() {
       log("settings clicked");
