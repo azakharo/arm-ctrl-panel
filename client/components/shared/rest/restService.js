@@ -134,6 +134,10 @@ mod.service(
     }
 
     function getAllProviders() {
+      if (isMyDebug) {
+        return getAllProvidersDUMMY();
+      }
+
       var providers = [];
       var deffered = $q.defer();
 
@@ -164,6 +168,34 @@ mod.service(
 
       return deffered.promise;
     }
+
+    function getAllProvidersDUMMY() {
+      var deffered = $q.defer();
+      deffered.resolve([
+        {
+          title: 'Эмитент 1',
+          description: 'первый эмитент',
+          app: {
+            title: 'Транспортное'
+          },
+          meta: {
+            roles: ["emitent"]
+          }
+        },
+        {
+          title: 'Эмитент 2',
+          description: 'второй эмитент',
+          app: {
+            title: 'Транспортное'
+          },
+          meta: {
+            roles: ["emitent"]
+          }
+        }
+      ]);
+      return deffered.promise;
+    }
+
 
     function getAllTransactions() {
       var transactions = [];
