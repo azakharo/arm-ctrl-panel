@@ -1,8 +1,5 @@
 #emitters-page-content.w100.h100.p1
   #emitters-title.text-large.pb1 Эмитенты, зарегистрированные в системе:
-  #emitters-table-wrapper
-    p ha -ha -ha
-  #emitters-nodata-msg-wrapper(ng-show="emitters.length === 0 && !isGettingData")
-    .nodata-msg Организации-эмитенты не найдены
-
-//.grid(ng-show="emitters.length > 0", ui-grid="gridOptions", ui-grid-auto-resize)
+  #emitters-table.grid(ng-show="emitters.length > 0", ui-grid="gridOptions", ui-grid-auto-resize)
+  //#emitters-nodata-msg-wrapper(ng-show="emitters.length === 0 && !isGettingData")
+  //  .nodata-msg Организации-эмитенты не найдены

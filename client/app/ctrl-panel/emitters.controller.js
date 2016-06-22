@@ -1,17 +1,10 @@
 'use strict';
 
 angular.module('armCtrlPanelApp')
-  .controller('EmittersCtrl', function ($scope, $rootScope, uiGridConstants, myRest) {
+  .controller('EmittersCtrl', function ($scope, $rootScope, $timeout, uiGridConstants, myRest) {
 
     /////////////////////////////////////////////////////////
     // Initialization
-
-    $scope.emitters = [];
-    updateEmitters();
-
-    // Initialization
-    /////////////////////////////////////////////////////////
-
 
     //-----------------------------------
     // ui-grid setup
@@ -40,6 +33,11 @@ angular.module('armCtrlPanelApp')
     // ui-grid setup
     //-----------------------------------
 
+    $scope.emitters = [];
+    $timeout(updateEmitters, 300);
+
+    // Initialization
+    /////////////////////////////////////////////////////////
 
     function updateEmitters() {
       $rootScope.isGettingData = true;
