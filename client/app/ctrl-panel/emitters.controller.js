@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('armCtrlPanelApp')
-  .controller('EmittersCtrl', function ($scope, $rootScope, myRest) {
+  .controller('EmittersCtrl', function ($scope, $rootScope, uiGridConstants, myRest) {
+
     /////////////////////////////////////////////////////////
     // Initialization
 
@@ -11,6 +12,35 @@ angular.module('armCtrlPanelApp')
     // Initialization
     /////////////////////////////////////////////////////////
 
+
+    //-----------------------------------
+    // ui-grid setup
+
+    $scope.gridOptions = {};
+    $scope.gridOptions.columnDefs = [
+      {
+        displayName: 'Приложение',
+        field: 'app.title'
+      },
+      {
+        displayName: 'Эмитент',
+        field: 'title'
+      },
+      {
+        displayName: 'Описание',
+        field: 'description'
+      }
+    ];
+
+    $scope.gridOptions.enableHorizontalScrollbar = uiGridConstants.scrollbars.NEVER;
+    $scope.gridOptions.enableVerticalScrollbar = uiGridConstants.scrollbars.WHEN_NEEDED;
+    $scope.gridOptions.enableColumnMenus = false;
+    $scope.gridOptions.data = [];
+
+    // ui-grid setup
+    //-----------------------------------
+
+
     function updateEmitters() {
       $rootScope.isGettingData = true;
       myRest.getAllProviders().then(
@@ -18,9 +48,11 @@ angular.module('armCtrlPanelApp')
           $scope.emitters = _.filter(providers, function (prov) {
             return prov.meta && prov.meta.roles && _.includes(prov.meta.roles, "emitent");
           });
+          $scope.gridOptions.data = $scope.emitters;
           $rootScope.isGettingData = false;
         },
         function (reason) {
+          $scope.gridOptions.data = [];
           $rootScope.isGettingData = false;
         }
       );
