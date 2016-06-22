@@ -24,19 +24,20 @@
   // CONTENT
   #content
     #sidebar
-      //#sidebar-title.pt1 Меню:
-      ul.nav.nav-pills.nav-stacked.p1
-        li.sidebar-menu-item(role='presentation', ng-repeat="mi in menuItems",
-        ng-class="{ 'active': isCurrentState(mi.state) }")
-          a(ng-click="onMenuItemClick(mi.state)", snap-close)
-            i.fa.fa-lg(ng-class="mi.icon")
-            span.ml1 {{ mi.title }}
-        li.sidebar-menu-item(role='presentation', ng-repeat="mi in esekMenuSubItems",
-        ng-class="{ 'active': isCurrentState(mi.state) }")
-          a(ng-click="onMenuItemClick(mi.state)", snap-close)
-            span.ml2 &nbsp;
-            i.fa.fa-lg(ng-class="mi.icon")
-            span.ml1 {{ mi.title }}
+      #sidebar-inner.m1.p1
+        //#sidebar-title.pt1 Меню:
+        ul.nav.nav-pills.nav-stacked
+          li.sidebar-menu-item(role='presentation', ng-repeat="mi in menuItems",
+          ng-class="{ 'active': isCurrentState(mi.state) }")
+            a(ng-click="onMenuItemClick(mi.state)", snap-close)
+              i.fa.fa-lg(ng-class="mi.icon")
+              span.ml1 {{ mi.title }}
+          li.sidebar-menu-item(role='presentation', ng-repeat="mi in esekMenuSubItems",
+          ng-class="{ 'active': isCurrentState(mi.state) }")
+            a(ng-click="onMenuItemClick(mi.state)", snap-close)
+              span.ml2 &nbsp;
+              i.fa.fa-lg(ng-class="mi.icon")
+              span.ml1 {{ mi.title }}
     #main-area.ui-view
   // FOOTER
   footer#footer.text-center Copyright &copy; 2015-2016 &mdash;&nbsp;
