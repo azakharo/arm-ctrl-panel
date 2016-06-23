@@ -48,7 +48,6 @@ angular.module('armCtrlPanelApp')
           });
           $scope.gridOptions.data = $scope.emitters;
           $rootScope.isGettingData = false;
-          //resizeTable();
         },
         function (reason) {
           $scope.gridOptions.data = [];

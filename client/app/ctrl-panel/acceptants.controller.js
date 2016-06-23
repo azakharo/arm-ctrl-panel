@@ -55,4 +55,23 @@ angular.module('armCtrlPanelApp')
       );
     }
 
+    ///////////////////////////////////////////////////////
+    // Grid resizing
+
+    function resizeTable() {
+      const newW = Math.floor( window.innerWidth - $('#sidebar').width() - 40 );
+      const newH = Math.floor( window.innerHeight - $('#header').height() - $('#footer').height() -
+      $('#acceptants-title').height() - 60 );
+      $scope.resizeGrid('#acceptants-table', newH, newW);
+    }
+
+    let onWindowResize = debounce(function () {
+      resizeTable();
+    }, 500);
+
+    $(window).resize(onWindowResize);
+
+    // Grid resizing
+    ///////////////////////////////////////////////////////
+
   });
