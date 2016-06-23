@@ -74,4 +74,23 @@ angular.module('armCtrlPanelApp')
     // ui-grid setup
     //-----------------------------------
 
+    ///////////////////////////////////////////////////////
+    // Grid resizing
+
+    function resizeTable() {
+      const newW = Math.floor( window.innerWidth - $('#sidebar').width() - 40 );
+      //const newH = Math.floor( window.innerHeight - $('#header').height() - $('#footer').height() -
+      //$('#services-title').height() - 60 );
+      $scope.resizeGrid('#services-tariffs-table', undefined, newW);
+    }
+
+    let onWindowResize = debounce(function () {
+      resizeTable();
+    }, 500);
+
+    $(window).resize(onWindowResize);
+
+    // Grid resizing
+    ///////////////////////////////////////////////////////
+
   });

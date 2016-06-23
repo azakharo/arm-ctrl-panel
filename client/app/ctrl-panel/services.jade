@@ -12,5 +12,4 @@
   ng-hide="gridOptions.data.length === 0",
   ui-grid="gridOptions", ui-grid-auto-resize, ui-grid-grouping)
   // No data message
-  #services-nodata-msg-wrapper(ng-show="gridOptions.data.length === 0 && !isGettingData")
-    .nodata-msg Услуги не найдены
+  #services-nodata-msg.nodata-msg(ng-show="gridOptions.data.length === 0 && !isGettingData") Услуги не найдены
