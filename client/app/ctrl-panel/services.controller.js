@@ -5,6 +5,7 @@ angular.module('armCtrlPanelApp')
     /////////////////////////////////////////////////////////
     // Initialization
 
+    $rootScope.isGettingData = true;
     $scope.apps = [];
     $scope.appSelected = null;
     $scope.tariffs = [];
