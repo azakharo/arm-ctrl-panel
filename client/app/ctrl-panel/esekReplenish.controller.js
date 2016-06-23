@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('armCtrlPanelApp')
-  .controller('EsekReplenishCtrl', function ($scope, $rootScope, $timeout, myRest) {
+  .controller('EsekReplenishCtrl', function ($scope, $rootScope, $timeout, $q, myRest) {
 
     $scope.data = {};
 
@@ -41,10 +41,15 @@ angular.module('armCtrlPanelApp')
 
     function getData() {
       $rootScope.isGettingData = true;
-      myRest.getStatReplenishment($scope.datePicker.date.startDate, $scope.datePicker.date.endDate).then(
+      $q.all([
+          myRest.getTariffs(),
+          myRest.getStatReplenishment($scope.datePicker.date.startDate, $scope.datePicker.date.endDate)
+      ]).then(
         function (data) {
           $rootScope.isGettingData = false;
-          $scope.data = data;
+          log(data[0]);
+          $scope.tariffs = data[0];
+          $scope.data = data[1];
           fixTableHeaders();
           //log(data);
         },
@@ -85,4 +90,11 @@ angular.module('armCtrlPanelApp')
       getData();
     });
 
-  }); // controller
+  }) // controller
+
+  .filter('currencyCode2Name', function() {
+    return function (curCode, tariffs) {
+      const tar = _.find(tariffs, (t) => t.currency.code === curCode);
+      return tar ? tar.name : curCode;
+    };
+  });

@@ -21,7 +21,7 @@
           th Кол-во
       tbody
         tr(ng-repeat='propName in getObjectPropNames(data.total)')
-          td {{propName}}
+          td {{propName | currencyCode2Name:tariffs}}
           td {{data.total[propName]}}
   // Statistic details
   #esek-replenish-detail-title.page-subtitle.pt2.pb1 Статистика по терминалам
@@ -39,7 +39,7 @@
           td.esek-replenish-term-row
         tr(ng-repeat='serviceName in getObjectPropNames(data.perTerminals[terminal])')
           td.w30
-          td.w30 {{serviceName}}
+          td.w30 {{serviceName | currencyCode2Name:tariffs }}
           td.w30 {{data.perTerminals[terminal][serviceName]}}
   // NO DATA message
   #esek-replenish-nodata.nodata-msg.stat-data(ng-show="showContent && (!data || isObjectEmpty(data) || isObjectEmpty(data.total)) && !isGettingData") НЕТ ДАННЫХ
