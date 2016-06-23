@@ -3,6 +3,7 @@
 angular.module('armCtrlPanelApp')
   .controller('EsekReplenishCtrl', function ($scope, $rootScope, $timeout, $q, myRest) {
 
+    $rootScope.isGettingData = true;
     $scope.data = {};
 
     //=======================================================
@@ -46,16 +47,16 @@ angular.module('armCtrlPanelApp')
           myRest.getStatReplenishment($scope.datePicker.date.startDate, $scope.datePicker.date.endDate)
       ]).then(
         function (data) {
-          $rootScope.isGettingData = false;
-          log(data[0]);
+          //log(data[0]);
           $scope.tariffs = data[0];
           $scope.data = data[1];
+          $rootScope.isGettingData = false;
           fixTableHeaders();
           //log(data);
         },
         function (reason) {
-          $rootScope.isGettingData = false;
           $scope.data = {};
+          $rootScope.isGettingData = false;
         }
       );
     }

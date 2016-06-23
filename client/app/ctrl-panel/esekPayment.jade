@@ -23,7 +23,7 @@
       tbody
         tr(ng-repeat='row in displayedData')
           td {{row.provider}}
-          td {{row.service}}
+          td {{row.service | serviceCode2Name}}
           td {{row.amount}}
   // NO DATA message
   #esek-payment-nodata.stat-data.nodata-msg(ng-show="showContent && (!data || data.length === 0) && !isGettingData") НЕТ ДАННЫХ

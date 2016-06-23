@@ -3,6 +3,7 @@
 angular.module('armCtrlPanelApp')
   .controller('EsekPaymentCtrl', function ($scope, $rootScope, $timeout, myRest) {
 
+    $rootScope.isGettingData = true;
     $scope.data = [];
 
     //=======================================================
@@ -43,7 +44,6 @@ angular.module('armCtrlPanelApp')
       $rootScope.isGettingData = true;
       myRest.getStatPayment($scope.datePicker.date.startDate, $scope.datePicker.date.endDate).then(
         function (data) {
-          $rootScope.isGettingData = false;
           let data2disp = [];
           const providerNames = getObjectPropNames(data);
           providerNames.forEach(function (provName) {
@@ -58,12 +58,13 @@ angular.module('armCtrlPanelApp')
             });
           });
           $scope.data = data2disp;
+          $rootScope.isGettingData = false;
           fixTableHeader();
           //log($scope.data);
         },
         function (reason) {
-          $rootScope.isGettingData = false;
           $scope.data = [];
+          $rootScope.isGettingData = false;
         }
       );
     }
@@ -92,4 +93,10 @@ angular.module('armCtrlPanelApp')
       getData();
     });
 
+  }) // controller
+
+  .filter('serviceCode2Name', function() {
+    return function (serviceCode) {
+      return serviceCode === 'intracity_passenger_traffic' ? "перевозка пассажиров" : serviceCode;
+    };
   });
