@@ -1,16 +1,4 @@
-#acceptants-page-content.p1
-  // Acceptant list
-  .text-large.mb1 Акцептанты, зарегистрированные в системе:
-  .red-table-wrapper(ng-show="acceptants.length > 0")
-    table(st-table='acceptants')
-      thead
-        tr
-          th Приложение
-          th Акцептант
-          th Описание
-      tbody
-        tr(ng-repeat='a in acceptants')
-          td {{a.app.title}}
-          td {{a.title}}
-          td {{a.description}}
-  .nodata-msg(ng-show="acceptants.length === 0 && !isGettingData") Организации-акцептанты не найдены
+#acceptants-page-content.w100.h100.p1
+  #acceptants-title.text-large.mb1 Акцептанты, зарегистрированные в системе:
+  #acceptants-table.grid(ng-show="acceptants.length > 0", ui-grid="gridOptions", ui-grid-auto-resize)
+  #acceptants-nodata-msg.nodata-msg(ng-show="acceptants.length === 0 && !isGettingData") Организации-акцептанты не найдены
