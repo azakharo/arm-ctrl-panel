@@ -105,9 +105,27 @@ angular.module('armCtrlPanelApp')
     // Sidebar
     /////////////////////////////////////////////////////////////////
 
-    // handling of window resizing
-    $scope.resizeDataView = function () {
+
+    //---------------------------------------------------------------
+    // ui-grid resizing
+
+    $scope.resizeGrid = function(gridDivID, newH, newW) {
+      var grid = $(gridDivID);
+      if (grid) {
+        if (newW && grid.width() !== newW) {
+          //log(`grid ${gridDivID}: change W, old ${grid.width()}, new ${newW}`);
+          grid.width(newW);
+        }
+        if (newH && grid.height() !== newH) {
+          //log(`grid ${gridDivID}: change H, old ${grid.height()}, new ${newH}`);
+          grid.height(newH);
+        }
+      }
     };
+
+    // ui-grid resizing
+    //---------------------------------------------------------------
+
 
     function log(msg) {
       $log.debug(msg);
