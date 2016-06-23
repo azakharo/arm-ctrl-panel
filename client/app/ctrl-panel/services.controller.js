@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('armCtrlPanelApp')
-  .controller('ServicesCtrl', function ($scope, $rootScope, uiGridConstants, myRest) {
+  .controller('ServicesCtrl', function ($scope, $rootScope, $timeout, uiGridConstants, myRest) {
     /////////////////////////////////////////////////////////
     // Initialization
 
@@ -30,6 +30,7 @@ angular.module('armCtrlPanelApp')
           $scope.gridOptions.data = tars;
           setGrouping();
           $rootScope.isGettingData = false;
+          $timeout(resizeTable, 100);
         },
         function (reason) {
           $rootScope.isGettingData = false;
@@ -79,9 +80,9 @@ angular.module('armCtrlPanelApp')
 
     function resizeTable() {
       const newW = Math.floor( window.innerWidth - $('#sidebar').width() - 40 );
-      //const newH = Math.floor( window.innerHeight - $('#header').height() - $('#footer').height() -
-      //$('#services-title').height() - 60 );
-      $scope.resizeGrid('#services-tariffs-table', undefined, newW);
+      const newH = Math.floor( window.innerHeight - $('#header').height() - $('#footer').height() -
+      $('#services-app-selector').height() - $('#services-title').height() - 60 );
+      $scope.resizeGrid('#services-table', newH, newW);
     }
 
     let onWindowResize = debounce(function () {
