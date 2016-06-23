@@ -1,4 +1,4 @@
-#esek-activat-page-content.p1
+#esek-activat-page-content.w100.h100.p1
   // Page Title
   #esek-activat-header
     span.text-xlarge Статистика активаций ЕСЭК&nbsp;
@@ -11,8 +11,8 @@
     uib-tooltip="Выбрать дату или период", tooltip-append-to-body="true", tooltip-placement="auto bottom")
       i.glyphicon.glyphicon-calendar
   // Statistic Results:
-  #esek-activat-table(ng-show="data && !isObjectEmpty(data)")
-    table.tbl-seawater.w50(st-table='data')
+  .pt1(ng-show="data && !isObjectEmpty(data)")
+    table.table.w50
       tbody
         tr
           td Всего активировано карт:
@@ -23,5 +23,8 @@
         tr
           td Нельготных:
           td {{data.nonexempted}}
+        tr
+          td
+          td
   // NO DATA message
   #esek-activat-nodata.nodata-msg(ng-show="(!data || isObjectEmpty(data)) && !isGettingData") НЕТ ДАННЫХ
