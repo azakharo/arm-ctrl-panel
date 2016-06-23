@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('armCtrlPanelApp')
-  .controller('EmittersCtrl', function ($scope, $rootScope, uiGridConstants, myRest) {
+  .controller('EmittersCtrl', function ($scope, $rootScope, $timeout, uiGridConstants, myRest) {
 
     /////////////////////////////////////////////////////////
     // Initialization
@@ -48,6 +48,7 @@ angular.module('armCtrlPanelApp')
           });
           $scope.gridOptions.data = $scope.emitters;
           $rootScope.isGettingData = false;
+          $timeout(resizeTable, 100);
         },
         function (reason) {
           $scope.gridOptions.data = [];
@@ -62,7 +63,7 @@ angular.module('armCtrlPanelApp')
     function resizeTable() {
       const newW = Math.floor( window.innerWidth - $('#sidebar').width() - 40 );
       const newH = Math.floor( window.innerHeight - $('#header').height() - $('#footer').height() -
-      $('#emitters-title').height() - 60 );
+      $('#emitters-title').height() - 40 );
       $scope.resizeGrid('#emitters-table', newH, newW);
     }
 
