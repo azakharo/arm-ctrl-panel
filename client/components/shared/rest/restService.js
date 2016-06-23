@@ -191,6 +191,26 @@ mod.service(
           meta: {
             roles: ["emitent"]
           }
+        },
+        {
+          title: 'Акцептант 1',
+          description: 'первый акцептант',
+          app: {
+            title: 'Транспортное'
+          },
+          meta: {
+            roles: ["acceptant"]
+          }
+        },
+        {
+          title: 'Акцептант 2',
+          description: 'второй акцептант',
+          app: {
+            title: 'Транспортное'
+          },
+          meta: {
+            roles: ["acceptant"]
+          }
         }
       ]);
       return deffered.promise;
