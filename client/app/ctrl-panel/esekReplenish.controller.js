@@ -45,6 +45,7 @@ angular.module('armCtrlPanelApp')
         function (data) {
           $rootScope.isGettingData = false;
           $scope.data = data;
+          fixTableHeaders();
           //log(data);
         },
         function (reason) {
@@ -62,6 +63,22 @@ angular.module('armCtrlPanelApp')
     //$timeout(() => $scope.showContent = true, 4500);
     $scope.showTimePeriod = true;
     $scope.showContent = true;
+
+
+    /////////////////////////////////////////////////////////////////
+    // Fix table headers
+
+    $(window).resize(function () {
+      fixTableHeaders();
+    });
+
+    function fixTableHeaders() {
+      $('#esek-replenish-total-tbl').stickyTableHeaders({scrollableArea: $('#esek-replenish-total-tbl-wrapper')});
+      $('#esek-replenish-detail-tbl').stickyTableHeaders({scrollableArea: $('#esek-replenish-detail-tbl-wrapper')});
+    }
+
+    // Fix table headers
+    /////////////////////////////////////////////////////////////////
 
 
     $scope.$watch('datePicker.date', function () {

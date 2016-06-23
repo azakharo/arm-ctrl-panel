@@ -1,15 +1,13 @@
 #esek-replenish-page-content {
-  flex: 1 1 600px;
-  overflow: auto;
 //  background: sandybrown;
-
   display: flex;
   flex-flow: column nowrap;
   align-items: stretch;
   justify-content: flex-start;
 }
 
-#esek-replenish-header, #esek-replenish-stat-total, #esek-replenish-nodata {
+#esek-replenish-header, #esek-replenish-total-title, #esek-replenish-detail-title,
+#esek-replenish-nodata {
   flex: none;
 }
 
@@ -17,45 +15,11 @@
   display: inline-block;
 }
 
-/////////////////////////////////////////////////
-// Detail section layout
-
-#esek-replenish-stat-detail {
-  flex: 1;
-//  background: orange;
-
-  display: flex;
-  flex-flow: column nowrap;
-  align-items: stretch;
-  justify-content: flex-start;
-}
-
-#esek-replenish-stat-detail-title {
-  flex: none;
-}
-
-#esek-replenish-stat-detail-table-header {
-  flex: none;
-
-  display: flex;
-  flex-flow: row nowrap;
-  align-items: stretch;
-  justify-content: flex-start;
-}
-
-.esek-replenish-stat-detail-table-header-cell {
-  flex: 1;
-  .bold;
-}
-
-.esek-replenish-stat-detail-table-term-row {
-  background: darken(lightgoldenrodyellow, 5%);
-}
-
-#esek-replenish-stat-detail-table-body {
-  flex: 1 1 200px;
+#esek-replenish-total-tbl-wrapper, #esek-replenish-detail-tbl-wrapper {
+  flex: 1 1 250px;
   overflow: auto;
 }
 
-// Detail section layout
-/////////////////////////////////////////////////
+.esek-replenish-term-row {
+  background: darken(lightgoldenrodyellow, 5%) !important;
+}
