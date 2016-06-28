@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('armCtrlPanelApp')
-  .controller('EsekBlockingCtrl', function ($scope, $rootScope, myRest) {
+  .controller('EsekBlockingCtrl', function ($scope, $rootScope, $q, myRest) {
 
     $scope.data = {};
 
@@ -39,23 +39,106 @@ angular.module('armCtrlPanelApp')
     //=======================================================
 
     function getData() {
+      const deffered = $q.defer();
+
       $rootScope.isGettingData = true;
       myRest.getStatEsekBlock($scope.datePicker.date.startDate, $scope.datePicker.date.endDate).then(
         function (data) {
           $rootScope.isGettingData = false;
           $scope.data = data;
           //log(data);
+          deffered.resolve(data);
         },
         function (reason) {
           $rootScope.isGettingData = false;
           $scope.data = {};
+          deffered.reject(reason);
         }
       );
+
+      return deffered.promise;
     }
 
     // Reaction on date range change
     $scope.$watch('datePicker.date', function () {
-      getData();
+      getData().then(
+          data => buildChart(),
+          reason => buildChart()
+      );
     });
+
+    ///////////////////////////////////////////////////////////////////////////
+    // Draw chart
+
+    function getChartElem() {
+      return $('#esek-block-chart');
+    }
+
+    function buildChart() {
+      const data = $scope.data;
+
+      if (!data || isObjectEmpty(data)) {
+        // drop the chart
+        var chart = getChartElem().highcharts();
+        if (chart) {
+          chart.destroy();
+        }
+      }
+      else {
+        // Draw chart
+        drawChart(data);
+      }
+    }
+
+    function drawChart(data) {
+      getChartElem().highcharts({
+        chart: {
+          type: 'pie',
+          backgroundColor: null,
+          plotBackgroundColor: null,
+          plotBorderWidth: null,
+          plotShadow: false
+        },
+        credits: {
+          enabled: false
+        },
+        title: {
+          text: ''
+        },
+        exporting: {
+          enabled: false
+        },
+        tooltip: {
+          pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+          pie: {
+            allowPointSelect: false,
+            cursor: 'pointer',
+            dataLabels: {
+              enabled: false
+            },
+            showInLegend: true
+          }
+        },
+        series: [{
+          name: 'блокировок',
+          colorByPoint: true,
+          data: [
+            {
+              name: 'Льготных',
+              y: data.exempted
+            },
+            {
+              name: 'Нельготных',
+              y: data.nonexempted
+            }
+          ]
+        }]
+      });
+    }
+
+    // Draw chart
+    ///////////////////////////////////////////////////////////////////////////
 
   });
