@@ -15,6 +15,7 @@ mod.service(
     var acceptantUrl = '/acceptant';
     var uptimeUrl = '/uptime';
     var dashboardUrl = '/dashboard';
+    var ctrlPanelUrl = '/public-dashboard';
     const acceptant1path = '/arm/accounting/stat-common-chart';
     const acceptant2path = '/acceptant2/statistic';
     let acceptant1Url = '';
@@ -30,13 +31,10 @@ mod.service(
       acceptantUrl = serverAddr + acceptantUrl;
       uptimeUrl = serverAddr + uptimeUrl;
       dashboardUrl = serverAddr + dashboardUrl;
-      acceptant1Url = '/#' + acceptant1path;
-      acceptant2Url = '/#' + acceptant2path;
+      ctrlPanelUrl = serverAddr + ctrlPanelUrl;
     }
-    else {
-      acceptant1Url = acceptantUrl + '/#' + acceptant1path;
-      acceptant2Url = acceptantUrl + '/#' + acceptant2path;
-    }
+    acceptant1Url = acceptantUrl + '/#' + acceptant1path;
+    acceptant2Url = acceptantUrl + '/#' + acceptant2path;
 
     function getBaseURL() {
       return baseURL;
@@ -60,6 +58,10 @@ mod.service(
 
     function getAcceptant2Url() {
       return acceptant2Url;
+    }
+
+    function getCtrlPanelUrl() {
+      return ctrlPanelUrl;
     }
 
     //$http.defaults.headers.common['Authorization'] = 'Basic ' + btoa('admin:admin');
@@ -2540,6 +2542,7 @@ mod.service(
       getAcceptant2Url: getAcceptant2Url,
       getUptimeUrl: getUptimeUrl,
       getDashboardUrl: getDashboardUrl,
+      getCtrlPanelUrl: getCtrlPanelUrl,
 
       getPaymentsBy: getPaymentsBy,
       isEsek: isEsek,
