@@ -29,13 +29,13 @@ angular.module('armCtrlPanelApp')
         url: myRest.getDashboardUrl(),
         name: 'Дашборд'
       },
-      {
-        url: myRest.getAcceptant1Url(),
-        name: 'Акцептант 1'
-      },
+      //{
+      //  url: myRest.getAcceptant1Url(),
+      //  name: 'Акцептант 1'
+      //},
       {
         url: myRest.getAcceptant2Url(),
-        name: 'Акцептант 2'
+        name: 'Акцептант'
       },
       {
         url: myRest.getUptimeUrl(),
