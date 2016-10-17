@@ -39,21 +39,51 @@ angular.module('armCtrlPanelApp')
     /////////////////////////////////////////////////////////
 
     function updateAcceptants() {
-      $rootScope.isGettingData = true;
-      myRest.getAllProviders().then(
-        function (providers) {
-          $scope.acceptants = _.filter(providers, function (prov) {
-            return prov.meta && prov.meta.roles && _.includes(prov.meta.roles, "acceptant");
-          });
-          $scope.gridOptions.data = $scope.acceptants;
-          $rootScope.isGettingData = false;
-          $timeout(resizeTable, 100);
-        },
-        function (reason) {
-          $scope.gridOptions.data = [];
-          $rootScope.isGettingData = false;
-        }
-      );
+      if (isRestDebug) {
+        let data = [
+          {
+            app: {
+              title: 'Транспортное'
+            },
+            title: 'ОАО "Пассажир" г.Саров',
+            description: 'междугородние перевозки'
+          },
+          {
+            app: {
+              title: 'Транспортное'
+            },
+            title: 'ОАО "Попутчик" г.Саров',
+            description: 'междугородние перевозки'
+          },
+          {
+            app: {
+              title: 'Транспортное'
+            },
+            title: 'МУП "ГорАвтоТранс" г.Саров',
+            description: 'междугородние перевозки'
+          }
+        ];
+        $scope.acceptants = data;
+        $scope.gridOptions.data = data;
+        $timeout(resizeTable, 100);
+      }
+      else {
+        $rootScope.isGettingData = true;
+        myRest.getAllProviders().then(
+          function (providers) {
+            $scope.acceptants = _.filter(providers, function (prov) {
+              return prov.meta && prov.meta.roles && _.includes(prov.meta.roles, "acceptant");
+            });
+            $scope.gridOptions.data = $scope.acceptants;
+            $rootScope.isGettingData = false;
+            $timeout(resizeTable, 100);
+          },
+          function (reason) {
+            $scope.gridOptions.data = [];
+            $rootScope.isGettingData = false;
+          }
+        );
+      }
     }
 
     ///////////////////////////////////////////////////////
