@@ -1,0 +1,11 @@
+; DO NOT EDIT (unless you know what you are doing)
+;
+; This subdirectory is a git "subrepo", and this file is maintained by the
+; git-subrepo command. See https://github.com/git-commands/git-subrepo#readme
+;
+[subrepo]
+	remote = https://github.com/azakharo/arm-shared.git
+	branch = master
+	commit = 091ffa55428ff6523117161f8cad78a51b169db5
+	parent = f4e5a80297d3dc9530c3804a430c239f37ed943e
+	cmdver = 0.3.0
