@@ -37,6 +37,12 @@ mod.service(
     //  ctrlPanelUrl = serverAddr + ctrlPanelUrl;
     //  armBankaUrl = serverAddr + armBankaUrl;
     //}
+    if (isMyDebug) {
+      acceptantUrl = 'https://aza-acceptant.herokuapp.com';
+      uptimeUrl = 'https://aza-uptime.herokuapp.com';
+      dashboardUrl = 'https://dashboard-page2.herokuapp.com';
+      ctrlPanelUrl = 'https://aza-ctrl-panel.herokuapp.com';
+    }
     acceptant1Url = acceptantUrl + '/#' + acceptant1path;
     acceptant2Url = acceptantUrl + '/#' + acceptant2path;
 
