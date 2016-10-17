@@ -809,6 +809,27 @@ module.exports = function (grunt) {
     'replace:baseUrl2'
   ]);
 
+  grunt.registerTask('heroku-build', [
+    'clean:dist',
+    'injector:less',
+    'concurrent:dist',
+    'injector',
+    'wiredep',
+    'useminPrepare',
+    'autoprefixer',
+    'ngtemplates',
+    'concat',
+    'ngAnnotate',
+    'copy:dist',
+    'copy:componentImages2dist',
+    'cdnify',
+    'cssmin',
+    'uglify',
+    'rev',
+    'usemin',
+    'replace:urlUiGrid'
+  ]);
+
   grunt.registerTask('default', [
     'newer:jshint',
     'test',
