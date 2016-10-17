@@ -9,35 +9,6 @@ angular.module('armCtrlPanelApp')
     $scope.apps = [];
     $scope.appSelected = null;
     $scope.tariffs = [];
-    myRest.getApps().then(function (apps) {
-      $scope.apps = apps;
-      if (apps.length > 0) {
-        $scope.appSelected = apps[0];
-        updateTariffs();
-      }
-    });
-
-    // Initialization
-    /////////////////////////////////////////////////////////
-
-    $scope.onSelectedAppChanged = function () {
-      updateTariffs();
-    };
-
-    function updateTariffs() {
-      $rootScope.isGettingData = true;
-      myRest.getAppTariffs($scope.appSelected).then(
-        function (tars) {
-          $scope.gridOptions.data = tars;
-          setGrouping();
-          $rootScope.isGettingData = false;
-          $timeout(resizeTable, 100);
-        },
-        function (reason) {
-          $rootScope.isGettingData = false;
-        }
-      );
-    }
 
     //-----------------------------------
     // ui-grid setup
@@ -75,6 +46,58 @@ angular.module('armCtrlPanelApp')
 
     // ui-grid setup
     //-----------------------------------
+
+
+    if (isRestDebug) {
+      $rootScope.isGettingData = false;
+      $scope.apps = [{
+        title: 'Транспортное'
+      }];
+
+      $scope.appSelected = $scope.apps[0];
+      updateTariffs();
+    }
+    else {
+      myRest.getApps().then(function (apps) {
+        $scope.apps = apps;
+        if (apps.length > 0) {
+          $scope.appSelected = apps[0];
+          updateTariffs();
+        }
+      });
+    }
+
+    // Initialization
+    /////////////////////////////////////////////////////////
+
+    $scope.onSelectedAppChanged = function () {
+      updateTariffs();
+    };
+
+    function updateTariffs() {
+      if (isRestDebug) {
+        myRest.getTariffs().then(
+          function (tars) {
+            $scope.gridOptions.data = tars;
+            $timeout(resizeTable, 100);
+          }
+        );
+      }
+      else {
+        $rootScope.isGettingData = true;
+        myRest.getAppTariffs($scope.appSelected).then(
+          function (tars) {
+            $scope.gridOptions.data = tars;
+            setGrouping();
+            $rootScope.isGettingData = false;
+            $timeout(resizeTable, 100);
+          },
+          function (reason) {
+            $rootScope.isGettingData = false;
+          }
+        );
+      }
+    }
 
     ///////////////////////////////////////////////////////
     // Grid resizing
